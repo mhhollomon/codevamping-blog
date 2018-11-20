@@ -1,0 +1,15 @@
+baseurl = "https://www.codevamping.com"
+title = "Code Vamping"
+author = "Mark Hollomon"
+copyright = "Copyright © 2018, Mark Hollomon"
+canonifyurls = true
+paginate = 3
+
+theme = "jeffprod"
+
+[params]
+backgroundImage = "img/bass_header.png"
+
+[taxonomies]
+    tag = "tags"
+    archive = "archives"
