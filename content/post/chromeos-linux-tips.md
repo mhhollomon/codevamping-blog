@@ -8,6 +8,16 @@ The new Linux Containers available on some ChromeBooks are manna from heaven if 
 
 Here is a set of tips to help make things a little nicer.
 
+## Clock Drift on ARM
+
+[According to this issue](https://bugs.chromium.org/p/chromium/issues/detail?id=823406), the ARM ecosystem does not virtualize the clock. So, if the system goes to sleep, the clock will simply stop.
+
+I can certainly confirm this on my Samsung ChromeBook Plus (as of 2018-11-21).
+
+It looks like they are working on a work-around, no telling when that will hit the channels.
+
+The work-around for now is in the issue, stop/start the virtual machine.
+
 ## Viewing local servers.
 
 Many systems these days come with a bundled local webserver to allow you test you changes without having to stage to a external host. BY default, these always want to listen on localhost (127.0.01). But hthe Linux container is a full-fledge VM and some localhost is, well, local. THi means that you can't use the "main" browser and point it to the localhost and have anything useful happen.
