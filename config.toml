@@ -7,6 +7,8 @@ paginate = 3
 
 theme = "jeffprod"
 
+googleAnalytics= "UA-129577406-1"
+
 [params]
 backgroundImage = "img/bass_header.png"
 
