@@ -5,12 +5,12 @@ copyright = "Copyright © 2018, Mark Hollomon"
 canonifyurls = true
 paginate = 3
 
-theme = "jeffprod"
+theme = "vellichor"
 
 googleAnalytics= "UA-129577406-1"
 
 [params]
-backgroundImage = "img/bass_header.png"
+    headerImage = "img/bass_header.png"
 
 [taxonomies]
     tag = "tags"
