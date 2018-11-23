@@ -11,6 +11,9 @@ googleAnalytics= "UA-129577406-1"
 
 [params]
     headerImage = "img/bass_header.png"
+    showReadTime = false
+    postDateFormat = "2006-01-02"
+    blogWelcome = "Blog Posts"
 
 [taxonomies]
     tag = "tags"
