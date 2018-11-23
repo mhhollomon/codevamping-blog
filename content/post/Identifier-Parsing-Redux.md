@@ -35,6 +35,5 @@ Now, we can happily make up keywords and keep the rest of the parser in sync.
 
 I will place a V4 in the [Github repository](https://github.com/mhhollomon/blogcode/tree/master/parse_ident).
 
------------
 
 [^1]: Yea, I know. Work with me.
