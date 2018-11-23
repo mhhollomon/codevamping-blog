@@ -8,4 +8,4 @@ I figured I better at least start the Onyx Spec page, so I did. You can find it 
 
 Built in types are there now.
 
-[Onyx Spec](https://codevamping.wordpress.com/onyx-spec/)
+[Onyx Spec]({{< ref "Onyx-Specification" >}})

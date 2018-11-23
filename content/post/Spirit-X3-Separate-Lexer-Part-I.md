@@ -4,12 +4,12 @@ date= 2018-09-29
 archives= "2018"
 tags= ["C++", "Spirit X3", "Boost"]
 +++
-Back in [this post](https://codevamping.wordpress.com/2018/09/16/identifier-parsing-in-boost-spirit-x3/), I said about Spirit ..
+Back in [this post]({{<ref "identifier-parsing-in-boost-spirit-x3">}}), I said about Spirit ..
 
 > ...it would be very feasible to write a lexical analyzer that makes a token object stream available via a ForwardIterator and write your grammar rules based on that.
 But is it ? really?
 
-The short answer is - Yes its feasible, but probably not a good idea.
+The short answer is - Yes it is feasible, but probably not a good idea.
 
 The long answer is the journey we'll take on the next two posts.
 
@@ -24,7 +24,7 @@ The Spirit framework can be thought of as having 4 categories of classes/objects
 * directives (lexeme and friends)
 * primitive parsers (char_, etc)
 
-Only the primitive parsers truly care about the type you get when dereferencing the iterators. Unfortunately, they really care (and rightly so). So, that means we will need to write replacements for them. Fortunately  we do **not** have to replace any of the rule or combinator infrastructure or this would be undoable - even on a dare.
+Only the primitive parsers truly care about the type you get when dereferencing the iterators. Unfortunately, they really care (and rightly so). So, that means we will need to write replacements for them. Fortunately, we do **not** have to replace any of the rule or combinator infrastructure or this would be undoable - even on a dare.
 
 To recap - we will be writing the following classes:
 
@@ -34,17 +34,18 @@ To recap - we will be writing the following classes:
 
 We will look at Token and Lexer in this post and tok in the next.
 
-All code can be found in the [GitHub repository](https://github.com/mhhollomon/lexer)
+All code can be found in the [GitHub repository](https://github.com/mhhollomon/lexer)
 
 ## Token Class
 
-Looking at lexer.hpp, the first thing we see is the `enum TokenType` . No surprises here except possibly the fact that we need a special tokEOF to signal the end of the end input. This will also act as the marker for the end iterator.
+Looking at lexer.hpp, the first thing we see is the `enum TokenType` . No surprises here except possibly the fact that we need a special tokEOF to signal the end of the end input. This will also act as the marker for the end iterator.
 
-`struct token` is also fairly simple. It will hold the TokenType, iterators to where in the input it was found and the actual lexeme. The lexeme won't be of much use except in the case of tokIdent.
+`struct token` is also fairly simple. It will hold the TokenType, iterators to where in the input it was found and the actual lexeme. The lexeme won't be of much use except in the case of 'tokIdent'.
 
-I intentionally made these small so that we could pass tokens around by value most of the time.  The embedded iterators are not really necessary for this project, but would be if this were fleshed out more with good parse error reporting.
+I intentionally made these small so that we could pass tokens around by value most of the time. The embedded iterators are not really necessary for this project, but would be if this were fleshed out more with good parse error reporting.
 
-The most important things are the `istype` member function and `mkend()` . `istype()` will be what the parser uses to decide if there is a match. `mkend()` is a static helper to generate an EOF token.
+The most important things are the `istype` member function and `mkend()`. 
+`istype()` will be what the parser uses to decide if there is a match. 'mkend()` is a static helper to generate an EOF token.
 
 ## Lexer Class
 
