@@ -1,13 +1,16 @@
 baseurl = "https://www.codevamping.com"
 title = "Code Vamping"
 author = "Mark Hollomon"
-copyright = "Copyright © 2018, Mark Hollomon"
 canonifyurls = true
 paginate = 3
 
 theme = "vellichor"
 
 googleAnalytics= "UA-129577406-1"
+
+[social]
+    github = "mhhollomon"
+    linkedin = "in/markhollomon"
 
 [params]
     headerImage = "img/bass_header.png"
