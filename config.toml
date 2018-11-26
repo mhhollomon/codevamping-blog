@@ -1,6 +1,5 @@
 baseurl = "https://www.codevamping.com"
 title = "Code Vamping"
-author = "Mark Hollomon"
 canonifyurls = true
 paginate = 3
 
@@ -13,6 +12,7 @@ googleAnalytics= "UA-129577406-1"
     linkedin = "in/markhollomon"
 
 [params]
+    author = "Mark Hollomon"
     headerImage = "img/bass_header.png"
     showReadTime = false
     postDateFormat = "2006-01-02"
