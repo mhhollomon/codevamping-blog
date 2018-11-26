@@ -2,7 +2,7 @@
 title= "Spirit X3 Separate Lexer Part II"
 date= 2018-10-08
 archives= "2018"
-tags= ["C++", "Boost", "Sirit X3"]
+tags= ["C++", "Boost", "Spirit X3"]
 +++
 [Last time]({{<ref "Spirit-X3-Separate-Lexer-Part-I" >}}), we looked at the lexer and supporting staff. This time, we will look at the primitive parser and final usage.
 
