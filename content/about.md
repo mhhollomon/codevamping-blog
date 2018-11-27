@@ -5,7 +5,7 @@ title = "About"
 
 ### Code Vamping
 
-This is will deal mainly with Software development topics with C++ being a major focus. However, a bit of music will be thrown in from time to time for spice. Needless to say, something that combines both will definitely fit.
+This blog will deal mainly with Software development topics with C++ being a major focus. However, a bit of music will be thrown in from time to time for spice. Needless to say, something that combines both will definitely fit.
 
 The main point of this site is to give me an outlet to explore technologies and topics that don't really fit into my day job.
 
