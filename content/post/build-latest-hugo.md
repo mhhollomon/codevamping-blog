@@ -26,7 +26,7 @@ $ ~/go/bin/hugo version
 Hugo Static Site Generator v0.52-DEV linux/arm64 BuildDate: unknown
 ~~~
 
-The downside of this is that `go get` always get the latest on the hugo master branch - whatever that is. I would prefer to only get sanctioned releases. Lets do it the hard way.
+The downside of this is that `go get` always gets the latest on the hugo master branch - whatever that is. I would prefer to only get sanctioned releases. Lets do it the hard way.
 
 ### The Hard Way
 
@@ -46,7 +46,7 @@ $ ./make.bash
 
 The new executable will be in the directory `golang/go/bin. Be sure to add that to the front of your path.
 
-You could run `./all.bash` instead to get it to run the test suite. But you will get a false failure[^1].
+You could run `./all.bash` instead to get it to run the test suite. But you might get a false failure[^1].
 
 Now, lets build hugo.
 
@@ -64,7 +64,11 @@ Add `${HOME}/go/bin` to your path and your finished.
 
 ### Updating
 
-The easiest way to update either item is to simply remove the source directory and start over using the new release tag. But you could also do the normal `git fetch` followed by `git checkout <label>`.
+The easiest way to update either item is to simply remove the source directory and start over using the new release tag. But you could also do :
 
+~~~bash
+git fetch origin tag v0.52
+git checkout v0.52
+~~~
 
 [^1]: See [this issue](https://github.com/golang/go/issues/27754). The problem has been fixed, but the fix causes the reverse failure depending on the exact version of binutils you have installed.
