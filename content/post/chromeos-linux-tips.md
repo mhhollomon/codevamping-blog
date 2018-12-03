@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "ChromeOS Linux Container (crostini) tips"
+title:  "Chrome OS Linux Container (crostini) tips"
 date: "2018-11-18"
-tags: ["crostini", "ChromeOS", "ChromeBook", "tip"]
+archives: "2018"
+tags: ["crostini", "Chrome OS", "ChromeBook", "tip"]
 ---
-The new Linux Containers available on some ChromeBooks are manna from heaven if you are developer. Having full blown Debian based distribution just a click away makes a supported ChromeBook a very usable development platform. And getting such a device can be cheap.
+The new Linux Containers available on some ChromeBooks are manna from heaven if you are developer. Having a full blown Debian based distribution just a click away makes supported ChromeBooks very usable development platforms. And getting such a device can be cheap.
 
 Here is a set of tips to help make things a little nicer.
 
@@ -18,7 +19,7 @@ I can certainly confirm this on my Samsung ChromeBook Plus (as of 2018-11-21).
 
 It looks like they are working on a work-around, no telling when that will hit the channels.
 
-The work-around for now is in the issue, stop/start the virtual machine.
+The work-around for now is in the issue, stop/start the virtual machine (see below).
 
 ## Viewing local servers.
 
@@ -47,7 +48,12 @@ While in the terminal hit `ctrl-shift-P`. This will bring up a browser tab with 
 
 ## Force shutdown the VM
 
-In the browser, `Ctrl-At-T` to bring up `crosh` shell.
+IN recent version beta versions, there is actually a menu item to do this. 
+Right click on the terminal icon and you should see a "Shut Down Linux (Beta)" item.
+
+If not, you can do it in crosh.
+
+`Ctrl-At-T` to bring up `crosh` shell.
 
 Enter the command: `vmc stop termina`
 
