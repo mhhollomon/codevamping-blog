@@ -14,6 +14,7 @@ googleAnalytics= "UA-129577406-1"
 [social]
     github = "mhhollomon"
     linkedin = "in/markhollomon"
+    stackoverflow = "users/10741691"
 
 [params]
     headerImage = "img/bass_header.png"
