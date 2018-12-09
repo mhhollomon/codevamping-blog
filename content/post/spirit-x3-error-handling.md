@@ -13,7 +13,7 @@ All code can be found on [github](https://github.com/mhhollomon/blogcode).
 
 If you have read the other posts I've written on using Boost::Spirit, you will be familiar with this grammar:
 
-```
+```c++
 auto const kw_var = mkkw("var");
 auto const kw_func = mkkw("func");
 
@@ -33,7 +33,7 @@ Statements are either `var foo;` or `func foo;`  repeated until you get bored. T
 
 And v1 works fine.
 
-```
+```plaintext
 > ./v1 "var foo ; func bar; func baz;"
 parsing : var foo ; func bar; func baz;
 Good input
@@ -51,7 +51,7 @@ The problem here is actually a feature - backtracking. If a parser cannot parse 
 
 We use this to our advantage in the line:
 
-```
+```c++
 auto const stmt = vardec | funcdec ;
 ```
 
@@ -67,14 +67,14 @@ But we can do a little better, and Spirit can help.
 
 Because of the way the grammar is defined, we know that once we see the `var` keyword, we better see an ident. Nothing else will do. And really, there is no point in backtracking, nothing else will match the `var`. And same thing for the "ident". There had better be a semi-colon - nothing else will do. So let's tell Spirit that by using the expectation operator `>` rather than the sequence operator `>>`.
 
-```
+```c++
 auto const vardec = kw_var > ident > ';' ;
 auto const funcdec = kw_func > ident > ';' ;
 ```
 
 So we make those changes, run with the error string and...
 
-```
+```plaintext
 $ ./v2 "var foo; func bar func baz"
 parsing : var foo; func bar func baz
 terminate called after throwing an instance of 'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::spirit::x3::expectation_failure<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >'
@@ -91,7 +91,7 @@ But we're going to do something even better.
 
 When you create a rule (rather than a bare parser), one of the pieces of info you give to the template is a unique "tag type". The tag type is used by the meta-programming magic in Spirit as a kind of identifier for the rule. Meta-programming can't easily get at the names of things, but can get at types.
 
-```
+```c++
 struct my_rule_tag {};
 x3::rule<my_rule_tag>const my_rule = "my_rule"
 auto const my_rule_def = .....
@@ -104,7 +104,7 @@ The interesting one for our purposes is error handing. If the tag type has a pub
 
 First, the lines for `stmt` itself.
 
-```
+```c++
 x3::rule<stmt_tag> const stmt = "stmt";
 auto const stmt_def = vardec | funcdec ;
 auto const program = +stmt;
@@ -113,7 +113,7 @@ BOOST_SPIRIT_DEFINE(stmt);
 
 Now the definition of stmt_tag:
 
-```
+```c++
 struct stmt_tag {
 
 template <typename Iterator, typename Exception, typename Context>
