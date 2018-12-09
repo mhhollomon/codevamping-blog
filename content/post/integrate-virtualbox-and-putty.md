@@ -39,7 +39,7 @@ Value: 10.0.0.90
 
 This reaches into the VM and requests ifnormation for the guest modules that are running. SO, if the Guest OS is not ready, you will get the following string instead.
 
-~~~
+~~~plaintext
 No value set!
 ~~~
 
