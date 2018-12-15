@@ -15,7 +15,7 @@ An assignment in Rust is by default, a move. The original variable is declared a
 
 The example used in the docs is:
 
-```
+```rust
 let s1 = String::from("hello");
 let s2 = s1;
 println!("{}, world!", s1);
@@ -27,7 +27,7 @@ Another place this can show up is in calling functions. By default, initializing
 
 First, lets look at another code example (again, straight from the docs).
 
-```
+```rust
 let x = 5;
 let y = x;
 println!("x = {}, y = {}", x, y);
@@ -39,7 +39,7 @@ The stated reason for this is that it prevents dangling pointers and double free
 
 Look at the following:
 
-```
+```rust
 struct Foo { a: i32, b: i32 };
 let x = Foo{ a: 1, b: 2};
 let y = x
@@ -50,7 +50,7 @@ This will also fail to compile - even though the compiler could quite easily fig
 
 You can tell the compiler to allow copy by setting the Copy trait.
 
-```
+```rust
 #[derive(Copy, Clone)]
 struct Foo { a:i32, b: i32 };
 ```

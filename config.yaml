@@ -1,0 +1,43 @@
+theme : "vellichor"
+
+baseurl : "https://www.codevamping.com"
+title   :  "Code Vamping"
+canonifyurls : true
+
+# Highlighting
+pygmentsCodefences: true
+pygmentsStyle     : 'vs'
+
+googleAnalytics: "UA-129577406-1"
+
+permalinks :
+    post : "/:year/:month/:filename"
+
+author:
+    name  : "Mark Hollomon"
+    email : "mhhollomon@gmail.com"
+
+social:
+    github : "mhhollomon"
+    linkedin : "in/markhollomon"
+    stackoverflow : "users/10741691"
+
+params:
+    headerImage : "img/bass_header.png"
+    showReadTime : false
+    postDateFormat : "2006-01-02"
+
+taxonomies:
+    tag : "tags"
+    archive : "archives"
+
+menu:
+    - identifier : "home"
+      name : "Home"
+      url : "/"
+      weight : -110
+
+    - identifier : "about"
+      name : "About"
+      url : "/about/"
+      weight : -100
