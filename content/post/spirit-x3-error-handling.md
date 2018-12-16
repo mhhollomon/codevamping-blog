@@ -1,9 +1,9 @@
 +++
 title= "Spirit X3 Error Handling"
 date= 2018-12-03
+publishDate = 2018-12-17
 archives= "2018"
 tags= ["C++", "Spirit X3", "Boost"]
-draft = true
 +++
 Once your parser grammar grows beyond a few rules/parsers, handling errors will become a priority. Being able to give feedback about where things went wrong, what exactly went wrong, and possible fixes are all things you would like to provide. It might also be nice to see if you could recover the parsing process from the point of failure and continue parsing to maybe find other problems.
 
@@ -100,7 +100,7 @@ BOOST_SPIRIT_DEFINE(my_rule)
 
 But the tag type can do other things.
 
-The interesting one for our purposes is error handing. If the tag type has a public template member function named `on_error()`, Spirit will call that instead of throwing the error. So, lets turn `stmt` into a rule and see what the handler looks like.
+The interesting one for our purposes is error handling. If the tag type has a public template member function named `on_error()`, Spirit will call that instead of throwing the error. So, lets turn `stmt` into a rule and see what the handler looks like.
 
 First, the lines for `stmt` itself.
 
@@ -126,3 +126,157 @@ template <typename Iterator, typename Exception, typename Context>
    }
 };
 ```
+
+There is a lot of information available to you. The `Exception`object has information `where`, `what` went wrong as well as what was expected (`which`). 
+
+
+The `last` iterator is the end of input iterator that was passed into the parser to start (ie the call to `phrase_parse` in `main`).
+
+The `first` iterator is the where the rule parse started. And this is why you want the error handling in as low-level a construct as possible. After all, if you put the error handling at the rule for the entire function definition, then `first` will point to the start of the definition, even if the failure was in line 50 of the function body. For our sample error string, it will point to the "f" in the second "func" keyword.
+
+The [V3 code](https://github.com/mhhollomon/blogcode/blob/master/errors/v3.cpp) makes use of this to try to print an error message that points to the place where parsing fails.
+
+```plaintext
+$ ./v3 "var foo; func bar func baz"
+parsing : var foo; func bar func baz
+ERROR! : boost::spirit::x3::expectation_failure
+Error! Expecting: ';' here:
+ func bar func baz
+----------^-------
+Failed: didn't parse everything
+stopped 17 characters from the end ( 'f' )
+```
+
+Really that error formatting should be broken out so it can be reused in a lot of our rules[^1].
+
+Also, it would be really cool if we could continue to parse and possibly catch more errors.
+
+### V4 - Acceptance
+
+Lets first move the the print code out to a template functor [error_reporter](https://github.com/mhhollomon/blogcode/blob/master/errors/v4.cpp). This will clean things up immensely. The new `on_error` looks like:
+
+```c++
+  error_reporter<Iterator, Exception, Context> er;
+
+  er(first, last, x ,context);
+
+  return x3::error_handler_result::fail;
+```
+
+So far, we have returned `fail` at the end to tell the parser to give up. But we have other choices.
+
+Value  |action
+-----  |------
+fail   |Give up.
+accept |Act like the parse works and keep going.
+rethrow|Rethrow the exception - a later on_error may try to handle.
+retry  |Try parsing the same rule again.
+
+It should be obvious that if you return `retry` you better have made a change or you are just going to end up in this `error_handler` again. Accept is the same way.
+
+For our code, since there is no way to make the current characters acceptable, we will "skip" them. This can be done by moving the iterator forward to the position pointed to by `x.where()` and returning `accept`[^2].
+
+```C++
+first = x.where();
+return x3::error_handler_result::accept;
+```
+
+Now, when we running with our faulty code ...
+
+```plaintext
+$ ../build/errors/v4 "var foo; func bar func baz"
+parsing : var foo; func bar func baz
+ERROR! : boost::spirit::x3::expectation_failure
+Error! Expecting: ';' here:
+ func bar func baz
+----------^-------
+ERROR! : boost::spirit::x3::expectation_failure
+Error! Expecting: ';' here:
+func baz
+--------^
+Good input
+```
+
+Well, it found both errors -- but why the "Good input" then?
+
+Our code is handling the exception and is telling Spirit to "accept" the parse. So, it has no way now to communicate that a failure happened.
+ We could, of course, keep track with a global variable, but no. What would be nice is if Spirit had a way to specify a callback when an error happened. Then the client code using the parser could do whatever it felt appropriate.
+
+### V5 - Call Me Maybe
+
+This is where we finally get to look at the `Context`.
+
+The Context can be thought of as a simple map between identifiers and objects. The grammar builder can use it anyway they choose to facilitate holding state and communicating either between parts of the grammar or with the grammar and the client.
+
+Of, course, this is metaprogramming, so it isn't that simple. The identifiers are actually types. But the idea remains the same.
+
+Let's use the Context to store a small object that will do nothing more than track the number of times it is called. `main` can then check this at the end to see if any errors occured. First, the class. we make it a functor for ease of use. For future expandability, we will make it take the iterators.
+
+```cpp
+// tag for the counter
+struct error_counter_tag;
+
+// counter functor
+template <typename Iterator>
+struct error_counter {
+    int error_count = 0;
+    void operator()(Iterator const& first, Iterator const& last) {
+        error_count += 1;
+    }
+};
+```
+
+Now we can create an instance of our functor and place it in the Context. That is accomplished via the helper `with`. In essence we will wrap our parser and change its type by adding this object.
+
+```cpp
+using boost::spirit::x3::with;
+auto errcnt   = error_counter<decltype(iter)>();
+
+auto const parser = with<error_counter_tag>(std::ref(errcnt))
+   [ program ];
+
+bool r = x3::phrase_parse(iter, end_iter, parser, x3::ascii::space);
+```
+
+We also changed the call to `phrase_parse` to reference the new wrapped parser `parser` rather than `program`.
+
+Now back up a bit and lets get it so `on_error` will actually call the functor. To do so, it must first retreive it from the context by using a templated get. Then, it can call `operator()`
+
+```cpp
+auto& counter = x3::get<error_counter_tag>(context).get();
+
+counter(first, last);
+```
+
+Now back to main where we need to actually query the error count.
+
+```cpp
+if (errcnt.error_count > 0) {
+   std::cout << "Failed:" << errcnt.error_count << " errors occured\n";
+   return 1;
+} else if (iter != end_iter) {
+    ...
+```
+
+Now, when we run with the faulty string ...
+
+```plaintext
+$ ../build/errors/v5 "var foo; func bar func baz"
+parsing : var foo; func bar func baz
+ERROR! : boost::spirit::x3::expectation_failure
+Error! Expecting: ';' here:
+ func bar func baz
+----------^-------
+ERROR! : boost::spirit::x3::expectation_failure
+Error! Expecting: ';' here:
+func baz
+--------^
+Failed:2 errors occured
+```
+
+This just scratches the surface, but should give you the tools to handle errors in Spirit::X3 parsers.
+
+
+#### Footnotes
+[^1]: Spirit has a nice helper class x3::error_handler that does a much better job at printing these message, _and_ can do so to any stream.
+[^2]: The [Spirit error handling tutorial](https://www.boost.org/doc/libs/1_68_0/libs/spirit/doc/x3/html/spirit_x3/tutorials/error_handling.html) seems to imply that the system will move the iterator for you as a response to the `accept`. It does not.
