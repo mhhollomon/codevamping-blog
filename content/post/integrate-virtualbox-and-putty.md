@@ -1,6 +1,7 @@
 +++
 title= "Integrate VirtualBox and PuTTY"
 date= 2018-12-10
+publishDate= 2018-12-10
 archives= "2018"
 tags= ['VirtualBox', 'Putty', 'PowerShell']
 description = "A simple Powershell script to automate starting and logging into a headless VBox VM with PuTTY"

@@ -1,6 +1,7 @@
 +++
 title= "Static Exceptions"
 date= 2018-09-27
+publishDate= 2018-09-27
 archives= "2018"
 tags= ["C++", "Onyx"]
 +++

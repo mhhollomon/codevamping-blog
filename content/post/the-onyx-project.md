@@ -1,6 +1,7 @@
 ---
 title: "The Onyx Project"
 date: 2018-10-14
+publishDate: 2018-10-14
 archives: "2018"
 tags: ["c++", "onyx"]
 ---

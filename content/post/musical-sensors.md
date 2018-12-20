@@ -1,6 +1,7 @@
 ---
 title: "Musical Sensors"
 date: 2018-10-25
+publishDate: 2018-10-25
 archives: "2018"
 tags: ["python", "science"]
 ---

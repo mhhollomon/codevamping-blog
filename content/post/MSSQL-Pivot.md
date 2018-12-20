@@ -1,6 +1,7 @@
 +++
 title= "MSSQL Pivot"
 date= 2018-09-25
+publishDate= 2018-09-25
 archives= "2018"
 tags= ["MSSQL"]
 +++

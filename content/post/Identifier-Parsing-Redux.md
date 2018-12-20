@@ -1,6 +1,7 @@
 +++
 title= "Identifier Parsing - Redux"
 date= 2018-09-20
+publishDate= 2018-09-20
 archives= "2018"
 tags= ["C++", "Boost", "Spirit X3"]
 +++

@@ -1,6 +1,7 @@
 +++
 title= "Onyx Spec Page"
 date= 2018-10-22
+publishDate= 2018-10-22
 archives= "2018"
 tags= ["Onyx"]
 +++

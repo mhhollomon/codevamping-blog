@@ -1,6 +1,7 @@
 ---
 title: "Dairying in Mongolia"
 date: "2018-11-07"
+publishDate: "2018-11-07"
 archives: "2018"
 tags: ["Mongolia", "HeritageDaily", "lactase"]
 ---

@@ -2,6 +2,7 @@
 layout: post
 title:  "Chrome OS Linux Container (crostini) tips"
 date: "2018-11-18"
+publishDate: "2018-11-18"
 archives: "2018"
 tags: ["crostini", "Chrome OS", "ChromeBook", "tip"]
 ---
