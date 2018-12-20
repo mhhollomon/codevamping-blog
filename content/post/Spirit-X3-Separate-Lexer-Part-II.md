@@ -1,6 +1,7 @@
 +++
 title= "Spirit X3 Separate Lexer Part II"
 date= 2018-10-08
+publishDate= 2018-10-08
 archives= "2018"
 tags= ["C++", "Boost", "Spirit X3"]
 +++

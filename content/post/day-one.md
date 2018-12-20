@@ -1,6 +1,7 @@
 ---
 title: "Day One"
 date: 2018-09-13
+publishDate: 2018-09-13
 archives: "2018"
 tags: ["site"]
 ---

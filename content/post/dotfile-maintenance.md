@@ -1,6 +1,7 @@
 ---
 title: "Dotfile Maintenance"
 date: 2018-11-12
+publishDate: 2018-11-12
 archives: "2018"
 tags: ["dotfiles", "vim", "github"]
 ---

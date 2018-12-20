@@ -1,6 +1,7 @@
 +++
 title= "Building the Latest Version of Hugo"
 date= 2018-11-27
+publishDate= 2018-11-27
 archives= "2018"
 tags= ["Hugo", "golang"]
 +++
