@@ -26,6 +26,10 @@ params:
     headerImage : "img/bass_header.png"
     showReadTime : false
     postDateFormat : "2006-01-02"
+    utterances :
+        repo     : "mhhollomon/codevamping-comments"
+        theme    : "github-light"
+        testRepo : "mhhollomon/blogcomments-test"
 
 taxonomies:
     tag : "tags"
