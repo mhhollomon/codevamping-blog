@@ -3,6 +3,7 @@ title= "Rust Move vs Copy"
 date= 2018-12-01
 publishDate = 2018-12-03
 archives= "2018"
+description= "For Move vs Copy, Rust has made mostly opposite decisions from C++"
 tags= ["Rust", "C++", "onyx"]
 +++
 I've been looking at the [Rust Ownership model](https://doc.rust-lang.org/book/2018-edition/ch04-01-what-is-ownership.html) .

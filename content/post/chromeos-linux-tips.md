@@ -10,6 +10,8 @@ The new Linux Containers available on some ChromeBooks are manna from heaven if 
 
 Here is a set of tips to help make things a little nicer.
 
+<!--more-->
+
 ## Clock Drift on ARM
 
 **latest update 2018-11-28** : Fix is merged and should be in M72 (which is scheduled for beta on Dec 13 and stable on Feb 5),
