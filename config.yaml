@@ -30,6 +30,7 @@ params:
         repo     : "mhhollomon/codevamping-comments"
         theme    : "github-light"
         testRepo : "mhhollomon/blogcomments-test"
+    openGraphImage : "img/CodeVamping.png"
 
 taxonomies:
     tag : "tags"
