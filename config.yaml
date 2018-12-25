@@ -31,6 +31,7 @@ params:
         theme    : "github-light"
         testRepo : "mhhollomon/blogcomments-test"
     openGraphImage : "img/CV-FB.gif"
+    siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
 
 taxonomies:
     tag : "tags"
