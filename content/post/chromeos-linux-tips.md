@@ -14,7 +14,10 @@ Here is a set of tips to help make things a little nicer.
 
 ## Clock Drift on ARM
 
-**latest update 2018-11-28** : Fix is merged and should be in M72 (which is scheduled for beta on Dec 13 and stable on Feb 5),
+**latest update 2019-01-18** : M72 has hit the Beta channel and I have tested
+and the fix seems to work!
+**update 2018-11-28** : Fix is merged and should be in M72 (which is scheduled
+for beta on Dec 13 and stable on Feb 5),
 
 [According to this issue](https://bugs.chromium.org/p/chromium/issues/detail?id=823406), the ARM ecosystem does not virtualize the clock. So, if the system goes to sleep, the clock will simply stop.
 
