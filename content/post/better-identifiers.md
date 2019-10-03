@@ -1,7 +1,6 @@
 ---
 title: "Better Identifiers"
 date: 2019-10-03T08:05:29-04:00
-draft: true
 publishDate: 2019-10-07
 archives: "2019"
 tags: ["C++"]
