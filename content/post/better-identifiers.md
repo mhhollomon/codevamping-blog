@@ -227,11 +227,11 @@ reflected in both the `friend` declaration as well as the operator definition.
 template<class Derived>
 class base_id {
     /* yada, yada */
-    friend std::ostream &operator<<(std::ostream &strm, base_id<Derived> d);
+    friend std::ostream &operator<<(std::ostream &strm, const base_id& d);
 };
 
 template<class T>
-std::ostream &operator<<(std::ostream &strm, base_id<T> d) {
+std::ostream &operator<<(std::ostream &strm, const base_id<T>& d) {
     strm << d.id;
     return strm;
 }
@@ -254,16 +254,16 @@ pre-declared.
 template<class Derived>class base_id;
 
 template<class T>
-std::ostream &operator<<(std::ostream &strm, base_id<T> d);
+std::ostream &operator<<(std::ostream &strm, const base_id<T> & d);
 
 template<class Derived>
 class base_id {
     /* yada, yada */
-    friend std::ostream &operator<< <>(std::ostream &strm, base_id<Derived> d);
+    friend std::ostream &operator<< <>(std::ostream &strm, const base_id& d);
 };
 
 template<class T>
-std::ostream &operator<<(std::ostream &strm, base_id<T> d) {
+std::ostream &operator<<(std::ostream &strm, const base_id<T>& d) {
     strm << d.id;
     return strm;
 }
@@ -273,7 +273,7 @@ Note, that we could **not** have made the operator template look like:
 
 ```cpp
 template<class T>
-std::ostream &operator<<(std::ostream &strm, T d) {
+std::ostream &operator<<(std::ostream &strm, const T& d) {
     strm << d.id;
     return strm;
 }
@@ -287,5 +287,21 @@ everything but those classes we are prepared to handle.
 
 ## wrap up
 
-Complete code will be available in the 
-[Github repository](https://github.com/mhhollomon/blogcode/tree/master/parse_ident).
+Complete code is be available in the 
+[Github
+repository](https://github.com/mhhollomon/blogcode/tree/master/identifiers).
+
+THere are several ways that this could be further enhanced.
+
+It would be nice to have the option to have different derived classes to still
+pull from the same id pool. This would be helpful if the data is going to be
+streamed somewhere else in a format where ids should be unique across the
+stream, not just per entity class. This could be handled using another template
+parameter to an "id allocator" that would default to the per class allocator.
+
+Use the [Boost uuid
+library](http://www.boost.org/doc/libs/1_65_1/libs/uuid/uuid.html) or
+[crossuuid](https://github.com/graeme-hill/crossguid) to generate ids.
+
+Your idea goes here.
+
