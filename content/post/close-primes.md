@@ -1,7 +1,7 @@
 ---
 title: "Close Primes"
 date: 2019-10-03T11:14:52-04:00
-publishDate: 2019-10-14
+publishDate: 2019-10-21
 archives: "2019"
 tags: ["Logic", "Math"]
 ---
