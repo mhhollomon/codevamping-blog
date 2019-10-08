@@ -8,6 +8,8 @@ tags: ["C++"]
 Using plain old `int`s as identifiers for classes/structs is tried and true, but
 we can do better.
 
+<!--more-->
+
 ## The problem
 
 While refactoring [yalr](https://github.com/mhhollomon/yalr), I realized I had
