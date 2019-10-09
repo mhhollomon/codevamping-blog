@@ -20,8 +20,8 @@ For each system, I try to give a neutral description. Afterwards, in italics,
 I've given my very subjective opinions. Those should be taken with a grain of
 salt.
 
-I expect to continue to add to this list as I have time. Please the References
-at the end for other lists.
+I expect to continue to add to this list as I have time. Please see the
+References at the end for other lists.
 
 Note: the below list is in alphabetical order.
 
@@ -44,6 +44,8 @@ Note: the below list is in alphabetical order.
     <td>Closed Source. Free plan only allows 100 comments per month (but
     unlimited views). Page to comment linkage can be specified in the
     Javascript.
+    <br>[<i>One of the nicer privacy policy pages. Penalty for going over the
+    free limit is pretty steep.</i>]
     </td>
 </tr>
 <tr>
@@ -64,7 +66,7 @@ Note: the below list is in alphabetical order.
     automating tasks or keeping stats. Your hosting choices are
         <ul>
         <li>Host it yourself</li>
-            <ul><li>The lowest hosted plan is 100$/month.</li></ul>
+            <ul><li>The lowest hosted plan is $100/month.</li></ul>
         <li>Pay Discourse to install it on <a
         href="https://www.digitalocean.com/">Digital Ocean</a> -  no support after
         the install</li>
@@ -73,8 +75,8 @@ Note: the below list is in alphabetical order.
 </tr>
 <tr>
     <td><a href="https://github.com/imsun/gitment">Gitment</a></td>
-    <td>Stores comments as github issues similar to utterances. You have to
-    initialize each page as it is published.
+    <td>Open Source. Stores comments as github issues similar to utterances. You 
+    have to initialize each page as it is published.
     </br>[<i>Utterances wears it better</i>]
     </td>
 </tr>
@@ -102,9 +104,10 @@ Note: the below list is in alphabetical order.
 </tr>
 <tr>
     <td><a href="https://just-comments.com/">JustComments</a></td>
-    <td>Closed source. Comments stored in their servers. Integrates login with
-    social sites or you can provide an auth end point for them to call.
-    Anonymous posting is possible, but can be disabled.
+    <td><a href="https://github.com/JustComments">Open Source</a>`. Hosted option.
+    Integrates login with social sites or you can provide an auth end point
+    for them to call.  Anonymous posting is possible, but can be disabled.
+    The page id is settable from the html.
     <br>[<i>The description of the pricing is a bit disjointed, but for a small
     website, it looks like it will run $6/month. Do note that the email feature is
     relatively expensive.</i>]
