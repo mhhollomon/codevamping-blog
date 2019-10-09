@@ -2,15 +2,11 @@
 title: "Comment Systems for Static Websites"
 date: 2018-12-21T08:40:22-05:00
 publishDate: "2018-12-30"
-archives: "2018"
 description: "A listing of comment systems for use with static websites"
 tags: ["Website Tech"]
 ---
 
-**NOTE**
-
-**Updated version can be found at the [comment systems]({{< relref
-"page/comment-systems-for-static-websites.md">}}) page**
+**updated 2019-10-09**
 
 Static websites are fast and tend to be simple to maintain. But the lack of
 processing on the server side means that comments (and other interaction) is a
@@ -18,7 +14,7 @@ bit of a hassle.
 
 Below is a list - by no means complete - of the systems for doing comments on a
 static website. In the end, they all amount to the same thing; using a server
-to serve comments. The differences are all around whose server are you using.
+to serve comments. The differences are all around who's server are you using.
 
 For each system, I try to give a neutral description. Afterwards, in italics,
 I've given my very subjective opinions. Those should be taken with a grain of
@@ -36,11 +32,11 @@ Note: the below list is in alphabetical order.
 <tbody>
 <tr>
     <td><a href="https://commento.io/">Commento</a></td>
-    <td><a href="https://gitlab.com/commento>Open Source"</a>. Hosted with Up to
-    10,000 page views per month is free. Or DIY hosting. Full OAuth support, so
-    google, etc. Integrates with Akismet.
-    <br>[<i>Not sure what hosted vs On-premise means. I Don't see a way to
-    specify the page to comment linkage.</i>]
+    <td><a href="https://gitlab.com/commento">Open Source</a>. Hosted with Up to
+    50,000 page views per month for about 5$/month. Or DIY hosting. No free tier.
+    But makes promises about privacy. Full OAuth support, so google, etc. Integrates with Akismet.
+    Possible to integrate with your own auth system.
+    <br>[<i>I Don't see a way to specify the page to comment linkage.</i>]
     </td>
 </tr>
 <tr>
@@ -68,6 +64,7 @@ Note: the below list is in alphabetical order.
     automating tasks or keeping stats. Your hosting choices are
         <ul>
         <li>Host it yourself</li>
+            <ul><li>The lowest hosted plan is 100$/month.</li></ul>
         <li>Pay Discourse to install it on <a
         href="https://www.digitalocean.com/">Digital Ocean</a> -  no support after
         the install</li>
@@ -77,7 +74,7 @@ Note: the below list is in alphabetical order.
 <tr>
     <td><a href="https://github.com/imsun/gitment">Gitment</a></td>
     <td>Stores comments as github issues similar to utterances. You have to
-    initialize each page as it is pulished.
+    initialize each page as it is published.
     </br>[<i>Utterances wears it better</i>]
     </td>
 </tr>
@@ -85,7 +82,8 @@ Note: the below list is in alphabetical order.
     <td><a href="https://graphcomment.com/en/">GraphComment</a></td>
     <td>Free up to a million page views. Integrates login with social sites.
     Has support to do sharing without redirection to the GraphComment servers.
-    The free tier spam filtering is all manual.
+    The free tier spam filtering is all manual. 
+    </br>[<i>Unconfirmed, but some sources say it injects a Facebook script.</i>]
     </td>
 </tr>
 <tr>
@@ -103,8 +101,20 @@ Note: the below list is in alphabetical order.
     </td>
 </tr>
 <tr>
+    <td><a href="https://just-comments.com/">JustComments</a></td>
+    <td>Closed source. Comments stored in their servers. Integrates login with
+    social sites or you can provide an auth end point for them to call.
+    Anonymous posting is possible, but can be disabled.
+    <br>[<i>The description of the pricing is a bit disjointed, but for a small
+    website, it looks like it will run $6/month. Do note that the email feature is
+    relatively expensive.</i>]
+    </td>
+</tr>
+<tr>
     <td><a href="https://muut.com/">Muut</a></td>
-    <td>Closed Source. No free plan.</td>
+    <td>Closed Source. Lowest plan is $16/month.
+    <br>[<i>Way more than a simple blog post commenting system</i>]
+    </td>
 </tr>
 <tr>
     <td><a href="https://staticman.net/">StaticMan</a></td>
@@ -132,16 +142,18 @@ Note: the below list is in alphabetical order.
     </td>
 <tr>
     <td><a href="https://www.talkyard.io/">TalkYard</a></td>
-    <td><a href="https://github.com/debiki/talkyard">OPen Source</a> so you
-    could host yourself. Hosted option is free for less than 24 posts per
-    *year*</a>
+    <td><a href="https://github.com/debiki/talkyard">Open Source</a> so you
+    could host yourself. Hosted option has a low cost (1 Euro/month) plan for
+    100 new comments per month.
+    <br>[<i>Assuming this is hosted in Europe, is there a GDPR implications for
+    US citizens?</i>]
     </td>
 </tr>
 <tr>
     <td><a href="https://utteranc.es/">Utterances</a></td>
     <td>Stores the comments as comments against github issues. Each issue will
     represent the comments for a particular page. You can control association. The
-    workflow is one by calling GitHub API in javascript directly from your page.
+    workflow is done by calling GitHub API in javascript directly from your page.
     <br>[<i>Does require that the commenter be a GitHub user. This is what I am
     currently using on this wesite.</i>]
     </td>
