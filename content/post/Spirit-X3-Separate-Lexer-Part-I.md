@@ -35,7 +35,7 @@ To recap - we will be writing the following classes:
 
 We will look at Token and Lexer in this post and tok in the next.
 
-All code can be found in the [GitHub repository](https://github.com/mhhollomon/lexer)
+All code can be found in the [GitHub repository](https://github.com/mhhollomon/blogcode/lexer)
 
 ## Token Class
 

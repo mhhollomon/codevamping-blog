@@ -7,7 +7,9 @@ tags= ["C++", "Boost", "Spirit X3"]
 +++
 [Last time]({{<ref "Spirit-X3-Separate-Lexer-Part-I" >}}), we looked at the lexer and supporting staff. This time, we will look at the primitive parser and final usage.
 
-The full code is in [GitHub](https://github.com/mhhollomon/lexer) .
+<!--more-->
+
+The full code is in [GitHub](https://github.com/mhhollomon/blogcode) .
 
 ## tok
 
