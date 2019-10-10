@@ -38,12 +38,18 @@ taxonomies:
     archive : "archives"
 
 menu:
-    - identifier : "home"
-      name : "Home"
-      url : "/"
-      weight : -110
+    brand:
+        - identifier : "home"
+          name : "Home"
+          url : "/"
+          weight : -110
 
-    - identifier : "about"
-      name : "About"
-      url : "/about/"
-      weight : -100
+        - identifier : "topics"
+          name : "TopicPages"
+          url  : "/page/"
+          weight : -100
+
+        - identifier : "about"
+          name : "About"
+          url : "/about/"
+          weight : -90
