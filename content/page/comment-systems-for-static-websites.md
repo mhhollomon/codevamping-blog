@@ -90,7 +90,7 @@ Note: the below list is in alphabetical order.
 </tr>
 <tr>
     <td><a href="https://intensedebate.com/home">IntenseDebate</a></td>
-    <td>By Automattic - the company behind Wordpress.Com (not org) and Akismet.
+    <td>Closed Source. By Automattic - the company behind Wordpress.Com (not org) and Akismet.
     <br>[<i>Sorry can't take that name seriously. Also, nothing on the site
     about pricing.</i>]
     </td>
@@ -104,7 +104,7 @@ Note: the below list is in alphabetical order.
 </tr>
 <tr>
     <td><a href="https://just-comments.com/">JustComments</a></td>
-    <td><a href="https://github.com/JustComments">Open Source</a>`. Hosted option.
+    <td><a href="https://github.com/JustComments">Open Source</a>. Hosted option.
     Integrates login with social sites or you can provide an auth end point
     for them to call.  Anonymous posting is possible, but can be disabled.
     The page id is settable from the html.
@@ -119,6 +119,15 @@ Note: the below list is in alphabetical order.
     <br>[<i>Way more than a simple blog post commenting system</i>]
     </td>
 </tr>
+<tr>
+    <td><a href="https://remark42.com/">Remark42</a></td>
+    <td><a href="https://github.com/umputun/remark">Open Source</a>. Self-hosted.
+    Has integration with many major Social Media sites as well as email login 
+    and (configurable) anonymous
+    posting. Very complete moderating tools. Page id can be set in the page's
+    javascript.
+    <br>[<i></i>]
+    </td>
 <tr>
     <td><a href="https://staticman.net/">StaticMan</a></td>
     <td>Stores comments as text files in your github repository. Has integration
@@ -154,7 +163,8 @@ Note: the below list is in alphabetical order.
 </tr>
 <tr>
     <td><a href="https://utteranc.es/">Utterances</a></td>
-    <td>Stores the comments as comments against github issues. Each issue will
+    <td><a href="https://github.com/utterance">Open Source</a>
+    Stores the comments as comments against github issues. Each issue will
     represent the comments for a particular page. You can control association. The
     workflow is done by calling GitHub API in javascript directly from your page.
     <br>[<i>Does require that the commenter be a GitHub user. This is what I am
@@ -171,3 +181,4 @@ Note: the below list is in alphabetical order.
 - [Derek Kay blog post](https://darekkay.com/blog/static-site-comments/)
 - [Static Man Example Site](https://mademistakes.com/) and the [GitHub
   Repo](https://github.com/mmistakes/made-mistakes-jekyll)
+- [List on Shifter.io](https://www.getshifter.io/static-site-comments/)
