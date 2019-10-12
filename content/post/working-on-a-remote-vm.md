@@ -1,13 +1,13 @@
 ---
 title: "Working on a Remote VM"
 date: 2019-10-12T09:47:38-04:00
-publishDate: 2019-10-12
+publishDate: 2019-10-28
 archives: "2019"
-draft : true
 tags: ["crostini", "virtualbox"]
 ---
 
-Logging into a remove VM from a local VM: A twisted story
+Logging into a remote VM from a local VM. Getting from here to there isn't all
+that hard.
 
 <!--more-->
 
@@ -88,18 +88,125 @@ Now, back to the services menu and restart the server.
 
 And boom! we're in.
 
-Note, to get the local area IP for your Win 10 box, you can use `ifconfig`
+Note, to get the local area IP for your Win 10 box, you can use `ifconfig`.
 
 ### Step 2 - crostini to Windows 10
 
-I figured this would be a no brainer. Just fire up the ssh and do it.`
+I figured this would be a no brainer. Just fire up ssh n crostinit and do it.
 
+Sure enough, No brainer.
+
+### Step 3 - crostini to virtualbox
+
+I also thought this would be easy. I could get to the VM from the Win10 box,
+so, this shouldn't be any different.
+
+As it turns out, this was a little painful. The VM had its network set in NAT
+mode. Which means the the Win10 was doing the routing and the VM's Ip was
+local.
+
+After consulting the VirtualBox manual, I realized I could put the VM's
+network in Bridge mode and it would talk pretty much directly to world. And so
+it did. As a side benefit, I noticed that the VM was actually visible to my
+router/modem as a connected device. This will come in handly in the next step.
+
+I spent about an hour working the kinks out of my various tools to talk to the
+VM from the Win10 box to handle this brave new world. Then, from that
+experience, it was time to try from crostini to virtualbox.
+
+And Boom! We're in.
+
+And after fixing a silly mistake in my .bashrc and adding the `-X` option to the
+ssh command, I had X forwarding working as well. 
+
+Nirvana! At least all on the local network.
+
+The silly .bashrc mistake? I was overwriting the `$DISPLAY` variable. When
+ssh/putty are asked to forward X (via the -X option), they set `$DISPLAY` for
+you on the remote side so that the X protocol messages get forward. My .bashrc
+was trying to be helpful and set DISPLAY based on `$SSH_CONNECTION`. This works
+locally on the win10 box (and is actually faster), but it defeats the forwarding.
+The clients are directly talking to the X server.
+
+### Step 4 - World Dominance
+
+My ISP provides a route/modem that automatically does NATing. So, all the boxes
+on the inside have private IPs that can't be seen from the outside.
+
+After a bit of research, I discovered that my ISP allows me to define prot
+forwarding rules in the router. So, I could set it up so that, say, port 42 on
+the external IP routes to port 42 of the win10 box or the VirtualBox vm.
+
+Lets go directly for the goal and try to talk to the VB vm.
+
+So, lets pick at port (2121 for this discussion) and do the following.
+
+First define the port forward rule (however you need to do that with your ISP).
+
+Then stop the sshd process on the VM, edit the config file to talk on the new
+port, and restart the sshd service.
+
+On my ArchLinux Vm, it looks like the following:
+
+```bash
+systemctl stop sshd.service
+
+vim /etc/ssh/sshd_config
+
+# Uncomment the line with:
+#   #Port 22
+# and set it to our new port
+#   Port 2121
+
+systemctl start sshd.service
+```
+
+Now, go back to the router and figure out the external IP. It should be listed
+as the WAN IP or similar.
+
+```
+ssh -C -X user@1.2.3.4 -p 2121
+```
+
+and BOOM! We're in.
+
+Now, I've accomplished the goal AND the stretch goal. 
+
+I was going to stop there but decided that I actually wanted to get to the
+win10 box as well. If nothing else, it would be a quick way to restart the vm -
+using virtualbox's CLI - when needed.
+
+This turned out be (almost) exactly the same as the configuring the VM.
+1. Update the router with yet another port to forward.
+2. Go to the service settings widget and stop the service
+3. edit C:\ProgramData\ssh\sshd_config to change the port
+4. drill a hole in the firewall
+   New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCO -Action Allow -LocalPort "our-new-port"
+4. Restart the service in the widget.
+
+And done.
+
+Well, not quite. I want to set up publickey encryption and disable password
+login, but I won't bore you with that.
+
+### Wrap up.
+
+Of course, one final touch would be to go to any of the multitude of dynamic
+DNS services and assign a nice name to that IP.
+
+When I started this, I thought it was going to be journal of things tried and
+frustrating setbacks. But it actually turned out to be a reasonably simple 1
+day task.
 
 ### Resource
 
 Here are some articles I found helpful while doing the research for this.
 
 **windows 10 ssh server**
+https://winscp.net/eng/docs/guide_windows_openssh_server
 https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
 https://winaero.com/blog/enable-openssh-server-windows-10/
 https://poweruser.blog/enabling-the-hidden-openssh-server-in-windows-10-fall-creators-update-1709-and-why-its-great-51c9d06db8df
+
+**virtualbox docs**
+https://www.virtualbox.org/manual
