@@ -62,7 +62,7 @@ class state_id_t {
 And that is the outline. Not too bad. It would be used as :
 
 ```cpp
-auto sid = state_id_t::get_next_id;
+auto sid = state_id_t::get_next_id();
 auto sid2 = sid;
 int foo = sid; // FAIL - excellent
 
