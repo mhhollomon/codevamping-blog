@@ -1,7 +1,7 @@
 ---
 title: "Working on a Remote VM"
 date: 2019-10-12T09:47:38-04:00
-publishDate: 2019-10-28
+publishDate: 2019-11-04
 archives: "2019"
 tags: ["crostini", "virtualbox"]
 ---
