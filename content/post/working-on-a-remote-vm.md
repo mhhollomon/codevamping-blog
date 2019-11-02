@@ -3,7 +3,7 @@ title: "Working on a Remote VM"
 date: 2019-10-12T09:47:38-04:00
 publishDate: 2019-11-04
 archives: "2019"
-tags: ["crostini", "virtualbox"]
+tags: ["crostini", "virtualbox", "win10", "ssh"]
 ---
 
 Logging into a remote VM from a local VM. Getting from here to there isn't all
@@ -92,7 +92,7 @@ Note, to get the local area IP for your Win 10 box, you can use `ifconfig`.
 
 ### Step 2 - crostini to Windows 10
 
-I figured this would be a no brainer. Just fire up ssh n crostinit and do it.
+I figured this would be a no brainer. Just fire up ssh in crostini and do it.
 
 Sure enough, No brainer.
 
@@ -130,16 +130,16 @@ The clients are directly talking to the X server.
 
 ### Step 4 - World Dominance
 
-My ISP provides a route/modem that automatically does NATing. So, all the boxes
+My ISP provides a router/modem that automatically does NATing. So, all the boxes
 on the inside have private IPs that can't be seen from the outside.
 
-After a bit of research, I discovered that my ISP allows me to define prot
+After a bit of research, I discovered that my ISP allows me to define port
 forwarding rules in the router. So, I could set it up so that, say, port 42 on
-the external IP routes to port 42 of the win10 box or the VirtualBox vm.
+the external IP routes to port 42 of the Win10 box or the VirtualBox VM.
 
-Lets go directly for the goal and try to talk to the VB vm.
+Lets go directly for the goal and try to talk to the VB VM.
 
-So, lets pick at port (2121 for this discussion) and do the following.
+So, lets pick a port (2121 for this discussion) and do the following.
 
 First define the port forward rule (however you need to do that with your ISP).
 
@@ -173,7 +173,7 @@ and BOOM! We're in.
 Now, I've accomplished the goal AND the stretch goal. 
 
 I was going to stop there but decided that I actually wanted to get to the
-win10 box as well. If nothing else, it would be a quick way to restart the vm -
+Win10 box as well. If nothing else, it would be a quick way to restart the VM -
 using virtualbox's CLI - when needed.
 
 This turned out be (almost) exactly the same as the configuring the VM.
