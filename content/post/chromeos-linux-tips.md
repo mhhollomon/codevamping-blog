@@ -16,6 +16,34 @@ Here is a set of tips to help make things a little nicer.
 <!--more-->
 
 
+## Error trying to see "Linux Files" (added 2019-11-11)
+
+IF you go to Files > My Files > Linux Files, it is supposed to show you the
+files in you home directory in the linux container. However, you might also see 
+something like
+
+```
+Error mounting crostini container: 15
+```
+
+The error number may change. 
+
+Here are some things to try to fix it.
+
+### flags
+
+Go to `chrome://flags` and press "Reset all to default" in the upper right hand
+corner and restart.
+
+### groupadd
+
+In the containers shell, type
+
+```bash
+sudo groupadd chromeos-access
+```
+
+Restart linux.
 ## Updating the version (added 2019-10-08)
 
 Currently, the bundled distribution is set to `stretch` which is ... old.
