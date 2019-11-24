@@ -5,20 +5,19 @@ publishDate: 2019-10-21
 archives: "2019"
 tags: ["Logic", "Math"]
 ---
-How many primes would a prime counter count if a prime counter could count
-primes?
-
 There is a recent paper that contains progress on proving the conjecture that
 there are [infinitely many pairs of twin
 primes](https://www.nature.com/news/first-proof-that-infinitely-many-prime-numbers-come-in-pairs-1.12989)
 
 This got me thinking about some other questions.
 
-If inifitely many twins, how about triplets or quadruplets? And could I
-acutally make a proof for or against those conjectures?
+<!--more-->
+
+If there are infinitely many twins, how about triplets or quadruplets? And
+could I acutally make a proof for or against those conjectures?
 
 First a bit of jargon. Twin primes are those primes that are two apart. 11 and
-13 are a prime twin. I will define a run of primes as a set of primes that are
+13 are a twin primes. I will define a run of primes as a set of primes that are
 consecutive twins. So 3, 5, 7 are a 3-run of primes.
 
 So the question: How many n-runs are there for some n > 2. Is it inifinite?
@@ -33,14 +32,14 @@ things that are true about small numbers. We'll mention some of these later.
 So, if we look at the numbers starting at 30 billion and distill them down to
 the final digits we have ...
 
-```
+```txt
 012345678901234567890123456789
 ```
 
 Now, lets use the Seive of Erostothenes, to get rid of those numbers that can't
 be prime. First, the even numbers.
 
-```
+```txt
 _1_3_5_7_9_1_3_5_7_9_1_3_5_7_9
 ```
 
