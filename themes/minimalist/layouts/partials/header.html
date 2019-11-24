@@ -1,18 +1,30 @@
-<!doctype html>
-<html class="no-js">
+<!DOCTYPE html>
+<html class="no-js"lang="{{ $.Site.LanguageCode | default "en" }}" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ if .IsNode}}{{ .Title }} &middot; {{end}}{{ .Site.Title }}</title>
         <meta name="author">
         <meta name="description" content="{{ .Site.Params.site_description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ hugo.Generator }}
-        {{ with .OutputFormats.Get "RSS" }}
+    {{ block "head-title" . }}
+        {{ if .IsNode }}
+             <title>{{ .Site.Title }}</title>
+        {{ else }}
+             <title>{{ .Site.Title }} {{ with .Title }} | {{ . }}{{ end }}</title>
+        {{end}}
+    {{end}}
+    {{- if eq (getenv "CONTEXT") "production" }}
+        {{ if hasPrefix .Site.GoogleAnalytics "UA-" }}
+            {{ template "_internal/google_analytics.html" . }}
+        {{end}}
+    {{ end -}}
+    {{ with .OutputFormats.Get "RSS" }}
         <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
         <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
-        {{ end }}
+    {{ end }}
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
         <link rel="icon" href="{{ "favicon.ico" | relURL }}">
         <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" />
