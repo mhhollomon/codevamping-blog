@@ -3,7 +3,6 @@ theme : "minimalist"
 baseurl : "https://www.codevamping.com/"
 languageCode : "en-us"
 title : "Code Vamping"
-canonifyurls : true
 
 # Define how many pages appear per site
 paginate : 10
