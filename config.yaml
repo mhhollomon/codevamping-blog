@@ -10,20 +10,20 @@ paginate : 10
 # Enable comments powered by Disqus by entering your disqus shortname
 #disqusShortname : "spf13"
 
-# Enable gogle analytics by entering your tracking code
-googleAnalytics : ""
+googleAnalytics: "UA-129577406-1"
 
 permalinks:
     post : "/:year/:month/:filename"
 
 params:
+    siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
     site_author : "Mark Hollomon"
     site_description : "Code Vamping - A (mostly) software development blog with music thrown in for spice"
     # Link custom assets relative to /static
     avatar : "img/profile-image.png"
-    header_background : "img/bass_header_narrow.jpg"
+    header_background : "img/bass_header_narrow2.jpg"
     header_title : "Code Vamping"
-    copyright : "Powered by [Hugo](http://gohugo.io)."
+    copyright : "Mark Hollomon <br/> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
     custom_css : []
     custom_js  : []
 
@@ -40,3 +40,4 @@ social :
     linkedin  : "markhollomon"
     stackoverflow : "10741691/mhhollomon"
     github    : "mhhollomon"
+    reddit    : "mhhollomon"
