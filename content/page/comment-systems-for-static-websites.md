@@ -4,6 +4,8 @@ date: 2018-12-21T08:40:22-05:00
 publishDate: "2018-12-30"
 description: "A listing of comment systems for use with static websites"
 tags: ["Website Tech"]
+aliases :
+    - /2018/12/comment-systems-for-static-websites
 ---
 
 (**Updated 2019-10-09**)
@@ -30,9 +32,9 @@ Note: the below list is in alphabetical order.
 
 CaaS = Comment as a service
 
-<table>
+<table class="spare_table">
 <thead>
-<tr><th>System</th><th>description</th></tr>
+<tr><th>System</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr>

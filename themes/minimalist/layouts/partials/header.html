@@ -26,9 +26,20 @@
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+        {{range .Site.Params.custom_css }}
+        <link rel="sylesheet" href="{{ . | relURL}}">
+        {{end}}
 
 {{ partial "favicon.html" . }}
-
+{{- if .IsPage }}
+        <meta property="og:title" content="{{.Title}}" />
+        <meta property="og:type"  content="article" />
+        <meta property="og:description" content="{{ .Description | default .Summary }}" />
+        <meta property="og:url"   content="{{.Permalink}}" />
+    {{- with $.Param "openGraphImage" }}
+        <meta property="og:image" content="{{ . | absURL }}" />
+    {{end}}
+{{end -}}
         <link rel="stylesheet" href="{{ "css/highlightjs/monokai.css" | relURL }}">
         <script src="{{ "js/vendor/modernizr-2.8.0.min.js" | relURL }}"></script>
         {{ range .Site.Params.custom_css }}

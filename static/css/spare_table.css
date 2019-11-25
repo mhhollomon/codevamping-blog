@@ -1,0 +1,10 @@
+.spare_table tr {
+    border-bottom : 1px solid black;
+}
+.spare_table td {
+    padding: 6px;
+}
+
+article a {
+    color: #3333aa;
+}

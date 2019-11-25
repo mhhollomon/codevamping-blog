@@ -24,7 +24,7 @@ params:
     header_background : "img/bass_header_narrow2.jpg"
     header_title : "Code Vamping"
     copyright : "Mark Hollomon <br/> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
-    custom_css : []
+    custom_css : [ "css/spare_table.css"]
     custom_js  : []
 
     # Define which content types are shown on the homepage
