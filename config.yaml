@@ -12,6 +12,10 @@ paginate : 10
 
 googleAnalytics: "UA-129577406-1"
 
+taxonomies:
+    tag : tags
+    archive : archives
+
 permalinks:
     post : "/:year/:month/:filename"
 
@@ -23,7 +27,7 @@ params:
     avatar : "img/profile-image.png"
     header_background : "img/bass_header_narrow2.jpg"
     header_title : "Code Vamping"
-    copyright : "Mark Hollomon <br/> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
+    copyright : "Mark Hollomon <br> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
     custom_css : [ "css/spare_table.css"]
     custom_js  : []
 
@@ -41,3 +45,20 @@ social :
     stackoverflow : "10741691/mhhollomon"
     github    : "mhhollomon"
     reddit    : "mhhollomon"
+
+menu:
+    brand:
+        - identifier : "home"
+          name : "Home"
+          url : "/"
+          weight : -110
+
+        - identifier : "topics"
+          name : "TopicPages"
+          url  : "/page/"
+          weight : -100
+
+        - identifier : "about"
+          name : "About"
+          url : "/about/"
+          weight : -90

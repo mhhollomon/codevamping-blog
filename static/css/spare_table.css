@@ -1,3 +1,4 @@
+/* Direct html table used in one of the pages */
 .spare_table tr {
     border-bottom : 1px solid black;
 }
@@ -5,6 +6,32 @@
     padding: 6px;
 }
 
+/* links in the main article should be a blue color */
 article a {
     color: #3333aa;
+}
+
+/* Styling for the archive links on the left */
+.archive {
+    text-align: left;
+}
+
+.archive h3 {
+    text-align: center;
+}
+
+/* The "brand" menu styling */
+.navbar-brand {
+    display: table-row;
+}
+
+.navbar-item {
+    display: table-cell;
+    padding: 3px;
+    border-right: 1px solid #909090;
+    border-collapse: collapse;
+}
+
+.navbar-item:first-child {
+    border-left: 1px solid #909090;
 }
