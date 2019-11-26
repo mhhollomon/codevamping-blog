@@ -1,0 +1,15 @@
+<h1>{{ .Title }}</h1>
+<footer class="post-info">{{  dateFormat "2006.01.02" .Params.publishDate }} <span class="post-meta"><time datetime="{{ dateFormat "2006.01.02" .Params.publishDate }}"/>
+{{ if isset .Params "tags" }}
+    {{ if gt (len .Params.tags) 0 }}&middot; 
+        {{ range $i, $v := .Params.tags }}
+        <a href="{{ $.Site.BaseURL }}tags/{{ $v | urlize }}">{{ $v | lower }}</a>{{ if ne (len $.Params.tags) (add $i 1) }}, {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+</span>
+{{ with .Resources.GetMatch "hero" }}
+    {{ $image := .Fill "800x300" }}
+    <img src="{{$image.RelPermalink}}" title="{{$image.Title}}" width="{{ $image.Width }}" height="{{ $image.Height }}">
+{{ end }}
+</footer>

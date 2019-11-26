@@ -1,0 +1,22 @@
+<aside class="author">
+  <p class="name">
+  <strong>{{ .Site.Params.site_author }}</strong></p>
+  <p class="address">{{ .Site.Params.location }}</p>
+  <p class="link"></p>
+  <ul class="social">
+    {{ partial "social" . }}
+  </ul>
+  <br><hr>
+  <div class="navbar-brand">
+    {{ with .Site.Menus.brand }}
+    {{ range . }}
+        <a class="navbar-item" href="{{.URL}}">{{.Name}}</a>
+    {{end}}
+    {{else}}
+        <a class="navbar-item" href="{{ "/" | relURL }}">Home</a>
+        <a class="navbar-item" href="{{ "about" | relURL }}">About</a>
+    {{end}}
+</div>
+  <hr>
+  {{ partial "widget-archives" . }}
+</aside>

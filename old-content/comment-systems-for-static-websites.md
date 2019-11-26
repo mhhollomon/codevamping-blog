@@ -5,6 +5,8 @@ publishDate: "2018-12-30"
 archives: "2018"
 description: "A listing of comment systems for use with static websites"
 tags: ["Website Tech"]
+aliases :
+    - /page/comment-systems-for-static-websites.md 
 ---
 
 **NOTE**

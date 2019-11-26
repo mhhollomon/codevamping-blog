@@ -1,41 +1,51 @@
-theme : "vellichor"
+theme : "minimalist"
 
-baseurl : "https://www.codevamping.com"
-title   :  "Code Vamping"
-canonifyurls : true
+baseurl : "https://www.codevamping.com/"
+languageCode : "en-us"
+title : "Code Vamping"
 
-# Highlighting
-pygmentsCodefences: true
-pygmentsStyle     : 'vs'
+# Define how many pages appear per site
+paginate : 10
+
+# Enable comments powered by Disqus by entering your disqus shortname
+#disqusShortname : "spf13"
 
 googleAnalytics: "UA-129577406-1"
 
-permalinks :
+taxonomies:
+    tag : tags
+    archive : archives
+
+permalinks:
     post : "/:year/:month/:filename"
 
-author:
-    name  : "Mark Hollomon"
-    email : "mhhollomon@gmail.com"
-
-social:
-    github : "mhhollomon"
-    linkedin : "in/markhollomon"
-    stackoverflow : "users/10741691"
-
 params:
-    headerImage : "img/bass_header.png"
-    showReadTime : false
-    postDateFormat : "2006-01-02"
-    utterances :
-        repo     : "mhhollomon/codevamping-comments"
-        theme    : "github-light"
-        testRepo : "mhhollomon/blogcomments-test"
-    openGraphImage : "img/CV-FB.gif"
     siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
+    site_author : "Mark Hollomon"
+    site_description : "Code Vamping - A (mostly) software development blog with music thrown in for spice"
+    # Link custom assets relative to /static
+    avatar : "img/profile-image.png"
+    header_background : "img/bass_header_narrow2.jpg"
+    header_title : "Code Vamping"
+    copyright : "Mark Hollomon <br> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
+    custom_css : [ "css/spare_table.css"]
+    custom_js  : []
+    commentbox_project: "5721662469177344-proj"
 
-taxonomies:
-    tag : "tags"
-    archive : "archives"
+    # Define which content types are shown on the homepage
+    mainSections : ["post", "page"]
+
+    # Enable gogle analytics by entering your tracking code
+    google_analytics : ""
+
+social :
+    # Add your social network accounts to the profile section on the left
+    # by entering your username. The links to your account will be
+    # create automatically.
+    linkedin  : "markhollomon"
+    stackoverflow : "10741691/mhhollomon"
+    github    : "mhhollomon"
+    reddit    : "mhhollomon"
 
 menu:
     brand:

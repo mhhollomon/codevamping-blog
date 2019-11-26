@@ -1,0 +1,14 @@
+{{/* We make the unwarranted assumption that the name of the service is the same as website */}}
+
+{{ range $serv, $userid := .Site.Social }}
+    {{ $icon_font := index $.Site.Data.socialIcon $serv }}
+    {{ $serv_url := index $.Site.Data.socialURL $serv }}
+    <li>
+        <a href="{{$serv_url}}{{$userid}}" class="mysocial">
+            <i class="{{$icon_font}} fa-1x"></i>
+        </a>
+    </li>
+    &nbsp;&nbsp;
+{{ end }}
+
+<li><a href="{{ .Site.BaseURL }}post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
