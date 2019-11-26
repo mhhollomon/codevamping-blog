@@ -9,7 +9,7 @@
 {{ end }}
 </span>
 {{ with .Resources.GetMatch "hero" }}
-    {{ $image := .Fill "800x300 Center" }}
+    {{ $image := .Fill "800x300" }}
     <img src="{{$image.RelPermalink}}" title="{{$image.Title}}" width="{{ $image.Width }}" height="{{ $image.Height }}">
 {{ end }}
 </footer>

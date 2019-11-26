@@ -24,9 +24,6 @@
         <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{ end }}
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <!--
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        -->
         <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
         {{range .Site.Params.custom_css }}
         <link rel="sylesheet" href="{{ . | relURL}}">
@@ -38,13 +35,17 @@
         <meta property="og:type"  content="article" />
         <meta property="og:description" content="{{ .Description | default .Summary }}" />
         <meta property="og:url"   content="{{.Permalink}}" />
-    {{- with $.Param "openGraphImage" }}
-        <meta property="og:image" content="{{ . | absURL }}" />
+    {{ with .Resources.GetMatch "hero" }}
+        {{ $image := .Fill "800x300" }}
+        <meta property="og:image" content="{{$image.Permalink }}" />
     {{end}}
 {{end -}}
         <link rel="stylesheet" href="{{ "css/highlightjs/monokai.css" | relURL }}">
         <script src="{{ "js/vendor/modernizr-2.8.0.min.js" | relURL }}"></script>
         <script src="https://kit.fontawesome.com/1853b1f0d9.js" crossorigin="anonymous"></script>
+        {{ with .Site.Params.commentbox_project }}
+            <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+        {{end}}
         {{ range .Site.Params.custom_css }}
         <link rel="stylesheet" href="{{ . | relURL }}">
         {{ end }}

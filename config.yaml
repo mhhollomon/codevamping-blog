@@ -30,6 +30,7 @@ params:
     copyright : "Mark Hollomon <br> Powered by [Hugo](https://www.gohugo.io) <br/> Hosted by [Netlify](https://www.netlify.com/)"
     custom_css : [ "css/spare_table.css"]
     custom_js  : []
+    commentbox_project: "5721662469177344-proj"
 
     # Define which content types are shown on the homepage
     mainSections : ["post", "page"]

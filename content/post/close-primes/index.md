@@ -4,6 +4,10 @@ date: 2019-10-03T11:14:52-04:00
 publishDate: 2019-10-21
 archives: "2019"
 tags: ["Logic", "Math"]
+resources:
+    - name: hero
+      src: "images/bird-3696862_1280.jpg"
+      title: "bird twins"
 ---
 There is a recent paper that contains progress on proving the conjecture that
 there are [infinitely many pairs of twin
@@ -110,3 +114,10 @@ guarantee that at some point the interlocking cycles combine to never allow two
 "consecutive" digits again..
 
 But hopefully we have had a bit of brain twisting prime fun.
+
+<br>
+
+<p>Image by <a
+href="https://pixabay.com/users/Meister199-9890276/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3696862">Rick
+Tremblay</a> from <a
+href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3696862">Pixabay</a></p>

@@ -11,13 +11,17 @@ resources:
       title: "Hammer and Nails"
 ---
 
-The site is a year old, so of course, a redesign is needed.
+The site is a year old, so of course, a redesign is needed. New looks, New
+comments, and more.
 <!--more-->
 
-The old theme was built on the [Bulma](https://Bulma.io/)
- framework. It is quite versatile and makes it very easy to put together some
-very nice websites. I found it quite nice to work with when I was putting
-together the original version of this blog.
+## Theme Change
+
+The [old theme](https://github.com/mhhollomon/hugo-theme-vellichor) was built
+on the [Bulma](https://Bulma.io/) framework. Bulma is quite versatile and that
+makes it very easy to put together some very nice websites. I found it quite
+nice to work with when I was putting together the original version of this
+blog.
 
 However, some of the tweaks I wanted to do (reduce some of the margins) would
 have required me to download the SCSS sources and regenerate the framework
@@ -29,12 +33,26 @@ have been a fine thing to do.
 Looking at the themes on the [Hugo Theme Showcase
 Website](https://themes.gohugo.io) I came across the [Hugo Minimalist
 Theme](https://github.com/digitalcraftsman/hugo-minimalist-theme). This seemed
-to do what I want without using a framework.
+to do what I wanted without using a framework.
 
 So, the redesign was in flight.
 
-There is still somethings I want to get done, but for the main part, I like the
-redesign.
+## Comments
+
+The original design used [Utterances](https://utterenc.es) which stored
+comments as issues in [Github](https:www.github.com). This worked fine but
+required the commenter to be a member of github.
+
+Now I've switched to [Commentbox](https://www.commentbox.io). This allows
+sign-in by various social media accounts.
+
+## TODO
+
+I still need to change the favicon. The current horrid mess must go.
+
+![Current favicon](/fav/android-chrome-192x192.png)
+
+Anybody want to volunteer to create a new one?
 
 <hr>
 

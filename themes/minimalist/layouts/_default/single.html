@@ -13,6 +13,13 @@
             {{ template "_internal/disqus.html" . }}
         </div>
         {{ end }}
+        {{ with .Site.Params.commentbox_project }}
+            <div class="commentbox"></div>
+            <script>
+                commentBox('{{.}}');
+            </script>
+        {{end}}
+
     </main>
     {{ partial "author" . }}
 </div>
