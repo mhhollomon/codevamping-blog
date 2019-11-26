@@ -4,6 +4,10 @@ date: 2019-10-12T09:47:38-04:00
 publishDate: 2019-11-04
 archives: "2019"
 tags: ["crostini", "virtualbox", "win10", "ssh"]
+resources:
+    - name: hero
+      src: "images/world-1264062_1280.jpg"
+      title: world
 ---
 
 Logging into a remote VM from a local VM. Getting from here to there isn't all
@@ -203,10 +207,16 @@ day task.
 Here are some articles I found helpful while doing the research for this.
 
 **windows 10 ssh server**
-https://winscp.net/eng/docs/guide_windows_openssh_server
-https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
-https://winaero.com/blog/enable-openssh-server-windows-10/
-https://poweruser.blog/enabling-the-hidden-openssh-server-in-windows-10-fall-creators-update-1709-and-why-its-great-51c9d06db8df
+
+ - https://winscp.net/eng/docs/guide_windows_openssh_server
+ - https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
+ - https://winaero.com/blog/enable-openssh-server-windows-10/
+ - https://poweruser.blog/enabling-the-hidden-openssh-server-in-windows-10-fall-creators-update-1709-and-why-its-great-51c9d06db8df
 
 **virtualbox docs**
-https://www.virtualbox.org/manual
+
+ - https://www.virtualbox.org/manual
+
+<hr>
+
+Image by <a href="https://pixabay.com/users/TheAndrasBarta-2004841/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062">TheAndrasBarta</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062">Pixabay</a>
