@@ -1,8 +1,4 @@
-{{ if .IsPage }}
 <h1>{{ .Title }}</h1>
-{{ else }}
-<h2><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
-{{ end }}
 <footer class="post-info">{{  dateFormat "2006.01.02" .Params.publishDate }} <span class="post-meta"><time datetime="{{ dateFormat "2006.01.02" .Params.publishDate }}"/>
 {{ if isset .Params "tags" }}
     {{ if gt (len .Params.tags) 0 }}&middot; 
@@ -12,4 +8,8 @@
     {{ end }}
 {{ end }}
 </span>
+{{ with .Resources.GetMatch "hero" }}
+    {{ $image := .Fill "800x300 Center" }}
+    <img src="{{$image.RelPermalink}}" title="{{$image.Title}}" width="{{ $image.Width }}" height="{{ $image.Height }}">
+{{ end }}
 </footer>
