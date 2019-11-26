@@ -39,8 +39,8 @@ So, the redesign was in flight.
 
 ## Comments
 
-The original design used [Utterances](https://utterenc.es) which stored
-comments as issues in [Github](https:www.github.com). This worked fine but
+The original design used [Utterances](https://utteranc.es/) which stored
+comments as issues in [Github](https://www.github.com). This worked fine but
 required the commenter to be a member of github.
 
 Now I've switched to [Commentbox](https://www.commentbox.io). This allows
