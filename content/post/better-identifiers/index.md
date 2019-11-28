@@ -6,8 +6,12 @@ archives: "2019"
 tags: ["C++"]
 resources:
     - name: hero
-      src: "images/jamie-street-NxCUU0lujD8-unsplash.jpg"
+      src: "jamie-street-NxCUU0lujD8-unsplash.jpg"
       title: "Dog Tag"
+      params:
+        credits:
+            Photo by [Jamie Street](https://unsplash.com/@jamie452?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on
+            [Unsplash](https://unsplash.com/s/photos/name-tag?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 ---
 Using plain old `int`s as identifiers for classes/structs is tried and true, but
 we can do better.
@@ -309,8 +313,3 @@ library](http://www.boost.org/doc/libs/1_65_1/libs/uuid/uuid.html) or
 [crossuuid](https://github.com/graeme-hill/crossguid) to generate ids.
 
 Your idea goes here.
-
-<hr>
-Photo by [Jamie Street](https://unsplash.com/@jamie452?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on
-[Unsplash](https://unsplash.com/s/photos/name-tag?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-

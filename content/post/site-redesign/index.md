@@ -7,8 +7,11 @@ drafts: true
 tags: [ "site" ]
 resources:
     - name: hero
-      src: images/nails-4607202_1280.jpg
+      src: nails-4607202_1280.jpg
       title: "Hammer and Nails"
+      params:
+        credits:
+            Image by <a href="https://pixabay.com/users/analogicus-8164369/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4607202">analogicus</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4607202">Pixabay</a>
 ---
 
 The site is a year old, so of course, a redesign is needed. New looks, New
@@ -53,7 +56,3 @@ I still need to change the favicon. The current horrid mess must go.
 ![Current favicon](/fav/android-chrome-192x192.png)
 
 Anybody want to volunteer to create a new one?
-
-<hr>
-
-Image by <a href="https://pixabay.com/users/analogicus-8164369/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4607202">analogicus</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4607202">Pixabay</a>

@@ -6,8 +6,12 @@ archives: "2019"
 tags: ["crostini", "virtualbox", "win10", "ssh"]
 resources:
     - name: hero
-      src: "images/world-1264062_1280.jpg"
+      src: "world-1264062_1280.jpg"
       title: world
+      params:
+        credits:
+            Image by [TheAndrasBarta](https://pixabay.com/users/TheAndrasBarta-2004841/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062)
+            from [Pixaby](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062)
 ---
 
 Logging into a remote VM from a local VM. Getting from here to there isn't all
@@ -216,7 +220,3 @@ Here are some articles I found helpful while doing the research for this.
 **virtualbox docs**
 
  - https://www.virtualbox.org/manual
-
-<hr>
-
-Image by <a href="https://pixabay.com/users/TheAndrasBarta-2004841/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062">TheAndrasBarta</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062">Pixabay</a>
