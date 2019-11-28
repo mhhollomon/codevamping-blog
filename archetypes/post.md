@@ -9,5 +9,6 @@ resources:
     - name: hero
       src: "<image name here>"
       title: "<title here>"
-      credit: "<Markdown credit string here>"
+      params:
+        credits: "<Markdown credit string here>"
 ---
