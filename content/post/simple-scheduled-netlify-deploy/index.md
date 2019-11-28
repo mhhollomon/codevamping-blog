@@ -4,10 +4,10 @@ date: 2019-11-28T10:04:10-05:00
 publishDate: 2019-12-02
 archives: "2019"
 drafts: true
-tags: []
+tags: ["netlify", "gcp", "hugo"]
 summary:
     A simple way to automate Netlify redeploys using Google Cloud
-    Scheduler.
+    Scheduler
 resources:
     - name: hero
       src: gears-4126485_1280.jpg
