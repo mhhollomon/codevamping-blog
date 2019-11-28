@@ -1,5 +1,3 @@
-{{/* We make the unwarranted assumption that the name of the service is the same as website */}}
-
 {{ range $serv, $userid := .Site.Social }}
     {{ $icon_font := index $.Site.Data.socialIcon $serv }}
     {{ $serv_url := index $.Site.Data.socialURL $serv }}
@@ -11,4 +9,4 @@
     &nbsp;&nbsp;
 {{ end }}
 
-<li><a href="{{ .Site.BaseURL }}post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+<li><a href="{{ .Site.BaseURL }}post/index.xml" class="fas fa-rss" target="_blank" title="RSS"></a></li>
