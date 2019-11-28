@@ -8,8 +8,10 @@ aliases :
     - /2018/12/comment-systems-for-static-websites
 resources:
     - name: hero
-      src: "images/cms-265128_1280.jpg"
+      src: "cms-265128_1280.jpg"
       title : "Comments"
+      params:
+        credits: "Image by [Werner Moser](https://pixabay.com/users/pixelcreatures-127599/) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=265128)"
 ---
 
 (**Updated 2019-11-26**)
@@ -244,7 +246,3 @@ CaaS = Comment as a service
 - [Static Man Example Site](https://mademistakes.com/) and the [GitHub
   Repo](https://github.com/mmistakes/made-mistakes-jekyll)
 - [List on Shifter.io](https://www.getshifter.io/static-site-comments/)
-
-<hr>
-
-Image by <a href="https://pixabay.com/users/pixelcreatures-127599/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=265128">Werner Moser</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=265128">Pixabay</a>
