@@ -6,8 +6,10 @@ archives: "2019"
 tags: ["c++"]
 resources:
     - name: hero
-      src: images/andre-guerra-G4ZjuxOFD8Y-unsplash.jpg
+      src: andre-guerra-G4ZjuxOFD8Y-unsplash.jpg
       title: Surpise!
+      params:
+        credits: "Photo by [Andre Guerra](https://unsplash.com/@andredoesphoto) on [Unsplash](https://unsplash.com/s/photos/surprise)"
 ---
 
 std::string has some useful features, but be careful.
@@ -169,7 +171,3 @@ syntax for this particular overload.
   discussions.
 - [Initialization in C++ is Seriously Bonkers](http://mikelui.io/2019/01/03/seriously-bonkers.html) - wider ranging discussion
   of c++ initialization.
-
-<br>
-Photo by [Andre
-Guerra](https://unsplash.com/@andredoesphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/surprise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

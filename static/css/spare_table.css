@@ -35,3 +35,10 @@ article a {
 .navbar-item:first-child {
     border-left: 1px solid #909090;
 }
+
+/* figures for the page tops */
+.page-banner figcaption {
+    font-size : 8pt;
+    line-height: 8pt;
+    font-style: italic;
+}
