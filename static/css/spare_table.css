@@ -37,7 +37,8 @@ article a {
 }
 
 /* figures for the page tops */
-.page-banner figcaption {
+/*.page-banner figcaption { */
+figcaption {
     font-size : 8pt;
     line-height: 8pt;
     font-style: italic;
@@ -49,10 +50,7 @@ article a {
     border-left: 3px solid #606020;
 }
 
-.side-note-text {
-    margin-left: 5px;
-}
-
 .side-note p {
-    margin-left: 8px;
-}
+    margin-left: 10px;
+    line-height: 20pt;
+    font-size: 14px;
