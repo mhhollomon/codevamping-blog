@@ -5,4 +5,9 @@ publishDate: {{ dateFormat "2006-01-02" now }}
 archives: "{{ dateFormat "2006" now }}"
 drafts: true
 tags: []
+resources:
+    - name: hero
+      src: "<image name here>"
+      title: "<title here>"
+      credit: "<Markdown credit string here>"
 ---
