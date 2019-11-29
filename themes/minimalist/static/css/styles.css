@@ -620,7 +620,9 @@ hr {
   padding: 0; }
 
 .author ul.social li {
-  display: inline; }
+  display: inline;
+  margin-right: 0.4em;
+ }
 
 .author ul.social li a {
   padding: 5px;

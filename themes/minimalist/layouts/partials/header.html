@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="author">
         <meta name="description" content="{{ .Site.Params.site_description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ hugo.Generator }}
@@ -14,19 +13,14 @@
              <title>{{ .Site.Title }} {{ with .Title }} | {{ . }}{{ end }}</title>
         {{end}}
     {{end}}
-    {{- if eq (getenv "CONTEXT") "production" }}
-        {{ if hasPrefix .Site.GoogleAnalytics "UA-" }}
-            {{ template "_internal/google_analytics.html" . }}
-        {{end}}
-    {{ end -}}
     {{ with .OutputFormats.Get "RSS" }}
         <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
-        <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{ end }}
-        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700"
+            rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
         {{range .Site.Params.custom_css }}
-        <link rel="sylesheet" href="{{ . | relURL}}">
+        <link rel="stylesheet" href="{{ . | relURL}}">
         {{end}}
 
 {{ partial "favicon.html" . }}
@@ -47,11 +41,12 @@
 
 {{end -}}
         <link rel="stylesheet" href="{{ "css/highlightjs/monokai.css" | relURL }}">
-        <script src="{{ "js/vendor/modernizr-2.8.0.min.js" | relURL }}"></script>
         <script src="https://kit.fontawesome.com/1853b1f0d9.js" crossorigin="anonymous"></script>
-        {{ with .Site.Params.commentbox_project }}
-            <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-        {{end}}
+{{- if .IsPage }}
+    {{- with .Site.Params.commentbox_project }}
+        <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+    {{end}}
+{{end}}
         {{ range .Site.Params.custom_css }}
         <link rel="stylesheet" href="{{ . | relURL }}">
         {{ end }}
