@@ -7,6 +7,7 @@
             {{ .Content}}
             {{ partial "article-share" . }}
         </article>
+        {{- if eq (getenv "CONTEXT") "production" }}
         {{ if .Site.DisqusShortname }}
         <div class="comments">
             <h3>{{ .Site.Data.l10n.comments.comments }}</h3>
@@ -18,6 +19,7 @@
             <script>
                 commentBox('{{.}}');
             </script>
+        {{end}}
         {{end}}
 
     </main>
