@@ -1,8 +1,6 @@
 <h1>{{ .Title }}</h1>
 <footer class="post-info">
-    {{  dateFormat "2006.01.02" .Params.publishDate }} 
-    <span class="post-meta">
-        <time datetime="{{ dateFormat "2006-01-02" .Params.publishDate }}"></time>
+    <time datetime="{{ dateFormat "2006-01-02" .Params.publishDate }}">{{  dateFormat "2006.01.02" .Params.publishDate }}</time>
 {{ if isset .Params "tags" }}
     {{ if gt (len .Params.tags) 0 }}&middot; 
         {{ range $i, $v := .Params.tags }}
@@ -19,5 +17,4 @@
     {{end}}
     </figure>
 {{ end }}
-    </span>
 </footer>
