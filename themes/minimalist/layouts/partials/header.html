@@ -38,7 +38,6 @@
     {{ with getenv "FACEBOOK_APP_ID" }}
         <meta property="fb:app_id" content="{{.}}" />
     {{end -}}
-
 {{end -}}
         <link rel="stylesheet" href="{{ "css/highlightjs/monokai.css" | relURL }}">
         <script src="https://kit.fontawesome.com/1853b1f0d9.js" crossorigin="anonymous"></script>
@@ -50,6 +49,11 @@
         {{ range .Site.Params.custom_css }}
         <link rel="stylesheet" href="{{ . | relURL }}">
         {{ end }}
+{{- if .IsPage }}
+        {{ range .Resources.ByType "css" }}
+        <link rel="stylesheet" href="{{ . | relURL }}">
+        {{ end }}
+{{ end }}
         <style>
         .site-header h2 .logo {
             background: #ffffff url({{ .Site.Params.header_background | relURL }}) no-repeat center center;
