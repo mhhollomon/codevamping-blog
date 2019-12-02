@@ -19,9 +19,6 @@
         <link href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700"
             rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
-        {{range .Site.Params.custom_css }}
-        <link rel="stylesheet" href="{{ . | relURL}}">
-        {{end}}
 
 {{ partial "favicon.html" . }}
 {{- if .IsPage }}
@@ -39,7 +36,6 @@
         <meta property="fb:app_id" content="{{.}}" />
     {{end -}}
 {{end -}}
-        <link rel="stylesheet" href="{{ "css/highlightjs/monokai.css" | relURL }}">
         <script src="https://kit.fontawesome.com/1853b1f0d9.js" crossorigin="anonymous"></script>
 {{- if .IsPage }}
     {{- with .Site.Params.commentbox_project }}
