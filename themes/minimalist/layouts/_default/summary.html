@@ -1,5 +1,5 @@
 <article class="post">
     {{ partial "summary-article-header" . }}
     {{ printf "%s" .Summary | markdownify }}
-    <p><a href="{{ .Permalink }}" title="{{ .Title }}">Read more &raquo;</a></p>
+    <p><a href="{{ .RelPermalink }}" title="{{ .Title }}">Read more &raquo;</a></p>
 </article>
