@@ -17,7 +17,7 @@ taxonomies:
     archive : archives
 
 permalinks:
-    post : "/:year/:month/:filename"
+    article : "/:year/:month/:filename"
 
 params:
     siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
@@ -37,7 +37,7 @@ params:
     commentbox_project: "5721662469177344-proj"
 
     # Define which content types are shown on the homepage
-    mainSections : ["post", "page"]
+    mainSections : ["article", "page"]
 
     # Enable gogle analytics by entering your tracking code
     google_analytics : ""
