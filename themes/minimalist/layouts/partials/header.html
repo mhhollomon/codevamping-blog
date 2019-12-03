@@ -47,7 +47,7 @@
         {{ end }}
 {{- if .IsPage }}
         {{ range .Resources.ByType "css" }}
-        <link rel="stylesheet" href="{{ . | relURL }}">
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
         {{ end }}
 {{ end }}
         <style>
