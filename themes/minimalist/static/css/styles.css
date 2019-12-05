@@ -722,5 +722,15 @@ body.post-template .site-header h2 .logo {
 blockquote {
     background-color: #dddddd; 
     border-left: 2px solid #888888;
-    padding-left: 4px;
+    padding-left: 6px;
+    padding-top: 0.2em;
+    position: relative;
+}
+
+blockquote::before {
+    content: "QUOTE";
+    font-style: italic;
+    font-size: 0.7em;
+    top: -0.7em;
+    position: absolute;
 }
