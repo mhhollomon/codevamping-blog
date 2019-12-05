@@ -19,6 +19,11 @@ taxonomies:
 permalinks:
     article : "/:year/:month/:filename"
 
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+
 params:
     siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
     site_author : "Mark Hollomon"
