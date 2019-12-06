@@ -696,18 +696,6 @@ body.post-template .site-header h2 .logo {
     background-size: 90px 74px; } 
 }
 
-.ir {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden;
-  *text-indent: -9999px; }
-
-.ir:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 150%; }
-
 .clearfix:before,
 .clearfix:after {
   content: " ";
