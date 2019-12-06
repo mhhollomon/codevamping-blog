@@ -1,4 +1,4 @@
-{{ partial "header" . }}
+{{define "main"}}
 <div class="container clearfix">
     <main class= "content">
         <a class="btn home" href="{{ "/" | relURL }}" title="Home">&laquo; Home</a>
@@ -12,3 +12,4 @@
     {{ partial "author" . }}
 </div>
 {{ partial "footer" . }}
+{{ end }}
