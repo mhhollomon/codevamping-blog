@@ -2,14 +2,14 @@
 <nav>
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
     {{ if .Paginator.HasPrev }}
-	<a class="btn newer" href="{{.Paginator.Prev.URL}}" title="Newer">&laquo; Newer</a>
+	<a class="pagination__newer btn" href="{{.Paginator.Prev.URL}}" title="Newer">&laquo; Newer</a>
 	{{ end }}
 {{ end }}
-	<p class="counter"> page {{ .Paginator.PageNumber}} of {{.Paginator.TotalPages}}</p>
+	<p class="pagination__counter"> Page {{ .Paginator.PageNumber}} of {{.Paginator.TotalPages}}</p>
 
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
 	{{ if .Paginator.HasNext }}
-	<a class="btn older" href="{{.Paginator.Next.URL}}" title="Older">Older &raquo;</a>
+	<a class="pagination__older btn" href="{{.Paginator.Next.URL}}" title="Older">Older &raquo;</a>
 	{{ end }}
 {{ end }}
 </nav>

@@ -4,12 +4,6 @@
   </div>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script>window.jQuery || document.write('<script src="{{ "js/vendor/jquery-1.11.0.min.js" | relURL }}"><\/script>')</script>
-<script src="{{ "js/plugins.js" | relURL }}"></script>
-
 {{ range .Site.Params.custom_js }}
 <link rel="stylesheet" href="{{ . | relURL }}">
 {{ end }}
@@ -18,6 +12,4 @@
     {{ if hasPrefix .Site.GoogleAnalytics "UA-" }}
         {{ template "_internal/google_analytics.html" . }}
     {{end}}
-{{ end -}}
-</body>
-</html>
+{{ end }}

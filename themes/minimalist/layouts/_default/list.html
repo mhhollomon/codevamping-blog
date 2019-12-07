@@ -1,7 +1,7 @@
-{{ partial "header" . }}
+{{define "main"}}
 <div class="container clearfix">
     <main class= "content">
-        <a class="btn home" href="{{ .Site.BaseURL }}" title="Home">&laquo; Home</a>
+        <a class="btn home" href="{{ "/" | relURL }}" title="Home">&laquo; Home</a>
         {{ $paginator := .Paginate .Data.Pages }}
         {{ range $paginator.Pages }}
             {{ .Render "summary" }}
@@ -12,3 +12,4 @@
     {{ partial "author" . }}
 </div>
 {{ partial "footer" . }}
+{{ end }}

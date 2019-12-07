@@ -1,11 +1,3 @@
-/* Direct html table used in one of the pages */
-.spare_table tr {
-    border-bottom : 1px solid black;
-}
-.spare_table td {
-    padding: 6px;
-}
-
 /* links in the main article should be a blue color */
 article a {
     color: #3333aa;

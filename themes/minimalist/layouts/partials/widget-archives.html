@@ -1,6 +1,6 @@
 <div class="archive">
     <h3 class="title is-5">Archives</h3>
-    {{ range (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
-        <a href="{{ "archives" | relURL }}/{{ .Key }}">{{ .Key }}</a> ({{ len .Pages }})<br>
+    {{ range sort .Site.Taxonomies.archives "Page.Title" "desc" }}
+    <a href="{{.Page.RelPermalink}}">{{ .Page.Title }}</a> ({{ .Count }})<br>
     {{ end }}
 </div>

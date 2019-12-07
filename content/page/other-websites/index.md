@@ -15,10 +15,23 @@ A list of web sites I have found useful or interesting
 
 <!--more-->
 
-## [Andrzej's C++ blog](https://akrzemi1.wordpress.com/ "Andrzej's C++ blog")
+## C++
 
-## [Sutter's Mill](https://herbsutter.com/ "Sutter's Mill")
+### [Andrzej's C++ blog](https://akrzemi1.wordpress.com/ "Andrzej's C++ blog")
 
-## [Standard C++ on the web](https://isocpp.org/)
+### [Sutter's Mill](https://herbsutter.com/ "Sutter's Mill")
 
-## [A good explanation of ADL](https://abseil.io/tips/49)
+### [Standard C++ on the web](https://isocpp.org/)
+
+### [A good explanation of ADL](https://abseil.io/tips/49)
+
+## Markdown
+
+### [Markdown Guide](https://www.markdownguide.org/)
+
+## CSS
+
+- [BEM](https://en.bem.info/)
+    - [GetBem](http://getbem.com/)
+    - [BEM 101](https://css-tricks.com/bem-101/)
+

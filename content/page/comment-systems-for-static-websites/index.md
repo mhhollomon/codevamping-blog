@@ -38,6 +38,7 @@ Note: The below list is in alphabetical order.
 
 CaaS = Comment as a service
 
+{{< raw-html >}}
 <table class="spare_table">
 <thead>
 <tr><th>System</th><th>Description</th></tr>
@@ -237,6 +238,7 @@ CaaS = Comment as a service
 </tr>
 </tbody>
 </table>
+{{< /raw-html >}}
 
 ## References
 

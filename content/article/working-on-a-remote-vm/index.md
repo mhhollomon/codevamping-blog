@@ -185,11 +185,14 @@ Win10 box as well. If nothing else, it would be a quick way to restart the VM -
 using virtualbox's CLI - when needed.
 
 This turned out be (almost) exactly the same as the configuring the VM.
+
 1. Update the router with yet another port to forward.
 2. Go to the service settings widget and stop the service
 3. edit C:\ProgramData\ssh\sshd_config to change the port
 4. drill a hole in the firewall
-   New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCO -Action Allow -LocalPort "our-new-port"
+   ```powershell
+   New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort "our-new-port"
+   ```
 4. Restart the service in the widget.
 
 And done.
