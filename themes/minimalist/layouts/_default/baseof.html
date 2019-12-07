@@ -78,8 +78,8 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="transparent-layer">
-            <h2>{{ .Site.Params.header_title }}</h2>
+        <div class="site-header__title-box transparent-layer">
+            <h2 class="site-header__title">{{ .Site.Params.header_title }}</h2>
         </div>
     </header>
     {{block "main" .}}

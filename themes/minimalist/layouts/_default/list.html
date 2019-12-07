@@ -1,7 +1,6 @@
 {{define "main"}}
-<div class="container clearfix">
-    <main class= "content">
-        <a class="btn home" href="{{ "/" | relURL }}" title="Home">&laquo; Home</a>
+<div class="page-container">
+    <main class= "main-content">
         {{ $paginator := .Paginate .Data.Pages }}
         {{ range $paginator.Pages }}
             {{ .Render "summary" }}
@@ -9,7 +8,7 @@
         {{ partial "pagination" . }}
     </main>
 
-    {{ partial "author" . }}
+    {{ partial "sidebar" . }}
 </div>
 {{ partial "footer" . }}
 {{ end }}

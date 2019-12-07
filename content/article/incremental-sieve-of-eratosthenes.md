@@ -20,7 +20,7 @@ the space requirement is **O**(n).
 Thinking as a software engineer, it is evident that the core of the Sieve's
 implementation would be a nested loop.
 
-```
+```txt
 for each prime
     for each multiple
         mark number as composite
@@ -31,7 +31,7 @@ end
 The inner loop depends on the outer loop. That is good for efficiency, but not
 for analysis. So lets rewrite as:
 
-```
+```txt
 for each prime
     for each number
         if number is a multiple of prime
@@ -43,7 +43,7 @@ end
 
 Now we can see that we could get the same results by inverting the loops.
 
-```
+```txt
 for each number
     for each prime
         if number is a multiple of prime
@@ -55,7 +55,7 @@ end
 So, now, we don't have to store the numbers. Instead we only have to store the
 primes. And since we are storing primes, we should make the test store it. 
 
-```
+```txt
 for each number
     for each prime
         if number is a multiple of prime
@@ -73,14 +73,15 @@ What if we stored a list of multiples for each prime ? But that quickly becomes
 **O**(n^^2) - until we realize that we really only care about multiples that
 are "near" our current target number. In, fact we only care about a multiple if
 it is equal or larger than our target. And we really only care about the
-samllest such multiple. So, in fact, we only need one multiple per prime. And
+smallest such multiple. So, in fact, we only need one multiple per prime. And
 so, the _Incremental Sieve_.
 
 In pseudo-code it wold look like:
-```
+
+```txt
 for each number
     for each prime
-        loop while number < current multiple
+        loop while current multiple < number
             get next multiple of the prime
         end
         if number == current multiple
