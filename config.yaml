@@ -23,6 +23,8 @@ markup:
     goldmark:
         renderer:
             unsafe: true
+    highlight:
+        style: vs
 
 params:
     siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
