@@ -859,18 +859,13 @@ blockquote::before {
 .navbar-brand {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: auto;
     justify-content: center;
 }
 
 .navbar-item {
-    padding: 3px;
-    border-right: 1px solid #909090;
-    border-collapse: collapse;
-}
-
-.navbar-item:first-child {
-    border-left: 1px solid #909090;
+    padding: 6px;
 }
 
 /************************************************************
