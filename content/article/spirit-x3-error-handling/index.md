@@ -1,11 +1,25 @@
-+++
-title= "Spirit X3 Error Handling"
-date= 2018-12-03
-publishDate = 2018-12-17
-archives= "2018"
-tags= ["C++", "Spirit X3", "Boost"]
-+++
-Once your parser grammar grows beyond a few rules/parsers, handling errors will become a priority. Being able to give feedback about where things went wrong, what exactly went wrong, and possible fixes are all things you would like to provide. It might also be nice to see if you could recover the parsing process from the point of failure and continue parsing to maybe find other problems.
+---
+title: "Spirit X3 Error Handling"
+date: 2018-12-03
+publishDate : 2018-12-17
+archives: "2018"
+tags: ["C++", "Spirit X3", "Boost"]
+resources:
+    - name: hero
+      src: boots-1853964_1280.jpg
+      title: "Boots"
+      params:
+        credits: 
+            Image by <a href="https://pixabay.com/users/Pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853964">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853964">Pixabay</a>
+---
+
+Once your parser grammar grows beyond a few rules/parsers, handling errors will
+become a priority. Being able to give feedback about where things went wrong,
+what exactly went wrong, and possible fixes are all things you would like to
+provide. It might also be nice to see if you could recover the parsing process
+from the point of failure and continue parsing to maybe find other problems.
+
+<!--more-->
 
 All code can be found on [github](https://github.com/mhhollomon/blogcode).
 
