@@ -566,6 +566,10 @@ hr {
   line-height: 1.65; 
 }
 
+.post ul {
+    line-height: 1.65;
+}
+
 
 /* Hanging indent on our section headers */
 .post h2,
@@ -575,6 +579,7 @@ hr {
 .post h6 {
   text-indent: var(--header-text-indent);
 }
+
 
 /************* Post-summary ****************
  *
