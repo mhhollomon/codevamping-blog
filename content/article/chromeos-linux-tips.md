@@ -52,59 +52,73 @@ Updating to stable is just like updating debian on any system.
 Edit the file `/etc/apt/sources.list` and put in stable where ever you see
 stretch.
 
-~~~
+```txt
 sudo vim /etc/apt/sources.list
-~~~
+```
 
 change:
-~~~
+```txt
 deb https://deb.debian.org/debian stretch main
 deb https://deb.debian.org/debian-security stretch/updates main
-~~~
+```
 to:
-~~~
+```txt
 deb https://deb.debian.org/debian stable main
 deb https://deb.debian.org/debian-security stable/updates main
-~~~
+```
 
 Then it is the normal
 
-~~~
+```txt
 sudo apt-get update
 sudo apt-get dist-upgrade
 sudo apt clean
-~~~
+```
 
 
 ## Viewing Local Servers
 
 Many systems these days come with a bundled local webserver to allow you test
 your changes without having to stage to a external host (think node.js, hugo,
-jekyll, etc). By default, these always want to listen on localhost (127.0.01).
+jekyll, etc). By default, these always want to listen on localhost (127.0.0.1).
 But the Linux container is a full-fledge VM and so localhost is, well, local.
 This means that you can't use the "main" browser and point it to the localhost
 and have anything useful happen.
+
+### Solution 1 - Install browser in the VM
 
 One solution is to install the browser of your choice into the VM and use that.
 But you have a perfectly good browser already installed, so why take up the
 space to install another?
 
+### Solution 2 - Switch VM Application to External Interface
 In order to use the main browser, you need to coax the local webserver to
 listen on the VM's external interface. To get the external interface, you can
 use the command `hostname -I` (note the capital I). 
 
 As an example here are the commands to make hugo and jekyll use the external interface.
-~~~~
+```txt
 hugo server --bind `hostname -I` --baseURL `hostname -I`
 jekyll serve --server `hostname -I`
-~~~~
+```
 
 To view the server, point the browser to
-~~~~
+```txt
 http://penguin.linux.test:<port>
-~~~~
+```
 
 ChromeOS points that synthetic domain to your Linux VM.
+
+### Solution 3 - Use a Port Forwarder
+
+The Chrome App [Connection
+Forwarder](https://chrome.google.com/webstore/detail/connection-forwarder/ahaijnonphgkgnkbklchdhclailflinn)
+can set up rules so that when you try to connect to e.g. `localhost:1313` it is
+forwarded to `penguin.linux.test:1313`
+
+Note that you _still_ need to make the application talk to the VM's external
+interface (solution 2). But now you can point your browser to localhost as you normally
+would.
 
 ## Configure the terminal
 
@@ -129,28 +143,8 @@ It will automatically restart when you start Terminal app.
 
 ## Access the distribution from crosh
 
-~~~
+```txt
 Ctrl-Alt-T                                 # open crosh
 vsh termina                                # start the VM and get a command prompt
 lxc exec penguin -- /bin/login -f <userid> # start the container
-~~~
-
-## Clock Drift on ARM (FIXED)
-
-**latest update 2019-01-18** : M72 has hit the Beta channel and I have tested
-and the fix seems to work!
-
-**update 2018-11-28** : Fix is merged and should be in M72 (which is scheduled
-for beta on Dec 13 and stable on Feb 5),
-
-[According to this
-issue](https://bugs.chromium.org/p/chromium/issues/detail?id=823406), the ARM
-ecosystem does not virtualize the clock. So, if the system goes to sleep, the
-clock will simply stop.
-
-I can certainly confirm this on my Samsung ChromeBook Plus (as of 2018-11-21).
-
-It looks like they are working on a work-around, no telling when that will hit the channels.
-
-The work-around for now is in the issue, stop/start the virtual machine (see
-above).
+```
