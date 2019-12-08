@@ -18,11 +18,11 @@ Here is a set of tips to help make things a little nicer.
 
 ## Error trying to see "Linux Files" (added 2019-11-11)
 
-IF you go to Files > My Files > Linux Files, it is supposed to show you the
-files in you home directory in the linux container. However, you might also see 
+If you go to Files > My Files > Linux Files, it is supposed to show you the
+files in your home directory in the linux container. However, you might also see 
 something like
 
-```
+```txt
 Error mounting crostini container: 15
 ```
 
@@ -44,7 +44,7 @@ sudo groupadd chromeos-access
 ```
 
 Restart linux.
-## Updating the version (added 2019-10-08)
+## Updating the Debian version (added 2019-10-08)
 
 Currently, the bundled distribution is set to `stretch` which is ... old.
 Updating to stable is just like updating debian on any system.
