@@ -14,6 +14,8 @@ even a fully realized Spirit parser makes this doubly so. Figuring out how to
 take advantage of separate compilation while maintaining the ability for each
 of the pieces to see the needed type/template information is not trivial.
 
+<!--more-->
+
 Fortunately, the library authors have given us [a starting
 place](https://www.boost.org/doc/libs/1_69_0/libs/spirit/doc/x3/html/spirit_x3/tutorials/minimal.html).
 Please go read and ponder that and then come back here.
@@ -33,9 +35,10 @@ But, notice that `main` doesn't include `config.hpp`. Instead, it redefines
 `iterator_type`. Yikes. So, two places to update if (for instance) you want to
 use the `boost::spirit::istream_iterator` as your iterator type.
 
-**short aside** Be sure to call `phrase_parse` without a namespace. Do _not_
+{{< side-note>}}Be sure to call `phrase_parse` without a namespace. Do _not_
 call it like `x3::phrase_parse`. Doing so turns off [Argument Dependent
 Lookup](https://abseil.io/tips/49). Evil ensues.
+{{< /side-note >}}
 
 ## Spaced out
 
@@ -43,7 +46,7 @@ While you are looking at the `phrase_parse` call, look at the 4th argument
 `space`. It is not immediately obvious, but that needs to match the template
 argument to `phrase_parse_context<>` - helpfully found in `config.hpp`. Again,
 if for no other reason than documentation, this needs to be visible to
-`main.cpp`
+`main.cpp`.
 
 My suggestion would be to get rid of `config.hpp` and just fold its contents
 into `employee.hpp`. The separate file adds no value. Anyone who needs

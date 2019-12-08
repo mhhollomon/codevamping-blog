@@ -1,15 +1,11 @@
 ---
 title: Markdown test page
 description: Example test article that contains basic HTML elements for text formatting on the Web.
-publishDate: 2019-09-24
+publishDate: 2017-01-21
 tags:
   - "HTML"
   - "CSS"
   - "Markdown"
-markup:
-    goldmark:
-        renderer:
-            unsafe: true
 ---
 
 <!--more-->
