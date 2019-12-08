@@ -1,10 +1,10 @@
-<h1>{{ .Title }}</h1>
-<footer class="post-info">
+<h1 class="main-content__title">{{ .Title }}</h1>
+<div class="post-info">
     <time datetime="{{ dateFormat "2006-01-02" .Params.publishDate }}">{{  dateFormat "2006.01.02" .Params.publishDate }}</time>
 {{ if isset .Params "tags" }}
     {{ if gt (len .Params.tags) 0 }}&middot; 
         {{ range $i, $v := .Params.tags }}
-        <a href="{{ $.Site.BaseURL }}tags/{{ $v | urlize }}">{{ $v | lower }}</a>{{ if ne (len $.Params.tags) (add $i 1) }}, {{ end }}
+        <a class="tag-link" href="{{ $.Site.BaseURL }}tags/{{ $v | urlize }}">{{ $v | lower }}</a>{{ if ne (len $.Params.tags) (add $i 1) }}, {{ end }}
         {{ end }}
     {{ end }}
 {{ end }}
@@ -17,4 +17,4 @@
     {{end}}
     </figure>
 {{ end }}
-</footer>
+</div>

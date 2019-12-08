@@ -4,6 +4,12 @@ date: 2019-02-18T13:53:03-05:00
 publishDate: 2019-02-25
 archives: "2019"
 tags: ["VirtualBox"]
+resources:
+    - name: hero
+      src: boots-1853964_1280.jpg
+      title: "boots"
+      credit:
+        Image by <a href="https://pixabay.com/users/Pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853964">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853964">Pixabay</a>
 ---
 
 The VM I use for development ran out of room on the boot partition. Here is how

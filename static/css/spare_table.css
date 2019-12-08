@@ -12,21 +12,6 @@ article a {
     text-align: center;
 }
 
-/* The "brand" menu styling */
-.navbar-brand {
-    display: table-row;
-}
-
-.navbar-item {
-    display: table-cell;
-    padding: 3px;
-    border-right: 1px solid #909090;
-    border-collapse: collapse;
-}
-
-.navbar-item:first-child {
-    border-left: 1px solid #909090;
-}
 
 /* figures for the page tops */
 /*.page-banner figcaption { */
@@ -36,10 +21,29 @@ figcaption {
     font-style: italic;
 }
 
+/********************************************
+ *
+ * Side-note shortcode styling
+ *
+ * If the shortcode moves to the theme, so should
+ * the styling.
+ *
+ ********************************************/
 .side-note {
     background-color: beige;
     margin-left: 1.5em;
     border-left: 3px solid #606020;
+    padding-top: 0.2em;
+    padding-left: 6px;
+    position: relative;
+}
+
+.side-note::before {
+    content: "Note";
+    font-style: italic;
+    font-size: 0.7em;
+    top: -0.7em;
+    position: absolute;
 }
 
 .side-note p {

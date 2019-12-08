@@ -388,6 +388,13 @@ th {
 
    -----------------------------------------------------------------------------
    -----------------------------------------------------------------------------*/
+
+/**** Variable *************************************/
+
+:root {
+  --header-text-indent: -30px;
+  --site-banner-height: 120px;
+}
 /*
  * Most of the website is built in Markdown via hugo. So selectors will be
  * elements rather than classes.
@@ -408,9 +415,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300; 
 }
 
-h2, h3, h4, h5, h6 {
-  text-indent: -1em;
-}
 
 /**********anchor tags ********/
 
@@ -437,22 +441,11 @@ hr {
   margin: 40px 0; }
 
 
-.container {
-  margin: 0 auto;
-  width: 1200px;
-  padding: 50px 0 0 0; }
-
-.author {
-  text-align: center;
-  width: 15%;
-  float: left;
-  margin: 20px 2% 0px 5%; }
-
-.content {
-  width: 70%;
-  margin-right: 5%;
-  float: right; }
-
+/************ Site header **********************/
+/* This is the site header that is shown on each page
+ * some of the style is in the html header since
+ * we need to be able to configure the image url
+ */
 .site-header {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -463,66 +456,171 @@ hr {
   position: relative;
   width: 100%;
   display: table;
-  transition: all 0.3s ease; }
+  transition: all 0.3s ease; 
+}
 
-.site-header div {
+.site-header__title-box {
   display: table-cell;
   vertical-align: middle;
 }
 
-.site-header h2 {
+.site-header__title {
   margin: 0;
   font-size: 74px;
   vertical-align: middle;
   font-weight: 500;
+  text-indent: 0; /* need this to overcome the eager text-indent on h2 */
 }
 
+/* 
+ * Mixin - Transparent layer
+ *
+ * This contains the site title.
+ * be careful of the alpha.
+ *
+ */
 .transparent-layer {
     width: 100%;
     height: 100%;
     background-color: rgba(127, 127, 127, 0.1);
 }
 
-.profile-image {
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%; }
+/* pages are built from flex box. */
+/*
+ * This is the top-level container 
+ * however, the site header will be above (and outside) this
+ */
+.page-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap; 
+  justify-content: center;
+  margin: 0 auto;
+  padding: 50px 0 0 0; 
+}
 
-.post h2 {
-  margin-top: 0; }
+.side-bar {
+  text-align: center;
+  width: 15%;
+  margin: 20px 2% 0px 5%; 
+}
 
-.post p {
-  line-height: 28px; }
+/* padding is to make room for the
+ * -1em text-indent used by the subheadings.
+ */
+.main-content {
+  width: 70%;
+  margin-right: 5%;
+  padding-left: calc( var(--header-text-indent) * -1 );
+}
 
-.post h2 a,
-.post-template h1 {
-  font-size: 44px;
-  margin-bottom: 10px; }
+.main-content__title {
+  text-indent: var(--header-text-indent);
+}
 
-.post-template h2,
-.post-template h3,
-.post-template h4,
-.post-template h5,
-.post-template h6 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700; }
+.main-content--flex {
+  display: flex;
+}
 
+.main-content__column {
+  margin: 0 2em 0 calc( var(--header-text-indent) * -1 );
+}
+
+
+
+
+
+/***************** Post **************************
+ *
+ * Main class for articles et al.
+ *
+ * A post will mostly be tags generated from Markdown.
+ * So, this will have to be our handle in most cases,
+ * to apply styles to the generic tags inside.
+ * 
+ *************************************************/
 .post {
   margin-bottom: 60px;
   padding-bottom: 60px;
-  border-bottom: 1px solid #cccccc; }
+  border-bottom: 1px solid #cccccc; 
+}
 
+/*****
+ * anchors that are h2
+ */
+.post h2 a {
+  font-size: 44px;
+  margin-bottom: 10px; 
+}
+
+/* don't let images overflow and let the browser keep
+ * the aspect-ratio constant
+ */
 .post img {
   max-width: 100%;
-  height: auto; }
+  height: auto; 
+}
 
+
+.post p {
+  line-height: 1.65; 
+}
+
+.post ul {
+    line-height: 1.65;
+}
+
+
+/* Hanging indent on our section headers */
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  text-indent: var(--header-text-indent);
+}
+
+
+/************* Post-summary ****************
+ *
+ * Make sure this is after post so we can use both,
+ * but this overrides
+ *******************************************/
+
+.post-summary {
+  padding-bottom: 15px;
+}
+
+/********** Post-info *************/
+/*
+ * The information black at the start of a post
+ * contains the featured image, date, tags
+ */
 .post-info {
   color: #a2a2a2;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 18px;
   margin-bottom: 40px;
-  line-height: 30px; }
+  line-height: 30px; 
+}
+
+/************************************************************
+ *
+ * Tag-link
+ *
+ * Mix-in block for anchors to tags or other taxonomy terms
+ *
+ ************************************************************/
+.tag-link {
+  text-decoration: none;
+  color: #3333aa;
+  transition: all 0.3s ease; 
+}
+
+.tag-link:hover {
+    color: #222222; 
+}
 
 .share-buttons {
   list-style: none;
@@ -620,37 +718,37 @@ hr {
   font-weight: 300;
   color: #979797; }
 
-.author {
+.side-bar {
   font-family: "Roboto", sans-serif;
   font-weight: 300; 
 }
 
-.author p {
+.side-bar p {
   margin: 0;
   padding: 0;
   font-size: 12px; }
 
-.author p.name {
+.side-bar p.name {
   font-size: 14px;
   margin: 10px 0; }
 
-.author p.address {
+.side-bar p.address {
   color: #979797; }
 
-.author p.link {
+.side-bar p.link {
   margin-bottom: 10px; }
 
-.author ul.social {
+.side-bar ul.social {
   list-style: none;
   display: inline;
   padding: 0; }
 
-.author ul.social li {
+.side-bar ul.social li {
   display: inline;
   margin-right: 0.4em;
  }
 
-.author ul.social li a {
+.side-bar ul.social li a {
   padding: 5px;
   font-size: 20px; }
 
@@ -672,58 +770,53 @@ hr {
 .main-footer p {
   font-size: 11px; }
 
-body.post-template > .site-header {
-  height: 250px;
-  transition: all 0.3s ease; }
 
+/*****************  Responsive **********************/
+/* fix things up for smaller screens
+ *
+ */
 @media only screen and (min-width: 720px) {
-  .container {
-    width: 100%; }
-
-  .site-header div {
-      height: 120px;
+  .page-container {
+    width: 100%; 
   }
 
-  .site-header h2 {
+  .site-header__title-box {
+      height: var(--site-banner-height);
+  }
+
+  .site-header__title {
       font-size: 56px;
   }
 }
+
 @media only screen and (max-width: 719px) {
-  .container {
+  .page-container {
     width: 90%;
     padding-top: 25px; }
 
-  .author, .content {
+  .side-bar,
+  .main-content {
     width: 100%;
     margin: 0; }
 
-  .author {
+  .side-bar {
     margin-bottom: 60px; }
 
-  .site-header,
-  body.post-template > .site-header {
-    height: 120px;
-    transition: all 0.3s ease; }
-
-
-  .site-header div {
-    height: 120px;
+  .site-header {
+    height: var(--site-banner-height);
+    transition: all 0.3s ease;
   }
-  .site-header h2 {
+
+
+  .site-header__title-box {
+      height: var(--site-banner-height);
+  }
+
+  .site-header__title {
     font-size: 36px;
-    background-size: 90px 74px; } 
+    background-size: 90px 74px; 
+  } 
 }
-
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-
-  display: table;
-}
-
-
-.clearfix:after {
-  clear: both; }
 
 
 /************************************************************
@@ -756,4 +849,37 @@ blockquote::before {
 .highlight {
     border-left: 0.25em solid #e0e0e0;
     padding-left: 1em;
+}
+
+/************************************************************
+ *
+ * sidebar "brand" menu
+ *
+ ************************************************************/
+.navbar-brand {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+}
+
+.navbar-item {
+    padding: 3px;
+    border-right: 1px solid #909090;
+    border-collapse: collapse;
+}
+
+.navbar-item:first-child {
+    border-left: 1px solid #909090;
+}
+
+/************************************************************
+ *
+ * Term links
+ *
+ ************************************************************/
+.term-link {
+  display: block;
+  margin: .25em 0 .25em 0;
+  font-size: 1.2em;
 }

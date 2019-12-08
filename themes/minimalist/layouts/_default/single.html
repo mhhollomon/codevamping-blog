@@ -1,6 +1,6 @@
 {{define "main" }}
-<div class="container clearfix">
-    <main class="content">
+<div class="page-container">
+    <main class="main-content">
         <article class="post">
             {{ partial "article-header" . }}
             {{ .Content}}
@@ -22,7 +22,7 @@
         {{end}}
 
     </main>
-    {{ partial "author" . }}
+    {{ partial "sidebar" . }}
 </div>
 
 {{ partial "footer" . }}

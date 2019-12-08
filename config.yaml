@@ -46,8 +46,6 @@ params:
     # Define which content types are shown on the homepage
     mainSections : ["article", "page"]
 
-    # Enable gogle analytics by entering your tracking code
-    google_analytics : ""
 
 social :
     # Add your social network accounts to the profile section on the left
@@ -61,16 +59,21 @@ social :
 menu:
     brand:
         - identifier : "home"
-          name : "Home"
+          name : "Home<fas fa-home>"
           url : "/"
           weight : -110
 
         - identifier : "topics"
-          name : "TopicPages"
+          name : "TopicPages<fas fa-scroll>"
           url  : "/page/"
           weight : -100
 
+        - identifier : "tags"
+          name : "Tags<fas fa-tags>"
+          url  : "/tags/"
+          weight : -100
+
         - identifier : "about"
-          name : "About"
+          name : "About<fas fa-address-card>"
           url : "/about/"
           weight : -90
