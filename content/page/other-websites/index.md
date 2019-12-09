@@ -17,21 +17,34 @@ A list of web sites I have found useful or interesting
 
 ## C++
 
-### [Andrzej's C++ blog](https://akrzemi1.wordpress.com/ "Andrzej's C++ blog")
+- [Andrzej's C++ blog](https://akrzemi1.wordpress.com/ "Andrzej's C++ blog")
 
-### [Sutter's Mill](https://herbsutter.com/ "Sutter's Mill")
+- [Sutter's Mill](https://herbsutter.com/ "Sutter's Mill")
 
-### [Standard C++ on the web](https://isocpp.org/)
+- [Standard C++ on the web](https://isocpp.org/)
 
-### [A good explanation of ADL](https://abseil.io/tips/49)
+- [A good explanation of ADL](https://abseil.io/tips/49)
 
 ## Markdown
 
-### [Markdown Guide](https://www.markdownguide.org/)
+- [Markdown Guide](https://www.markdownguide.org/)
 
 ## CSS
+
+- [CSS-Tricks](https://css-tricks.com/)
+
+- [W3School CSS](https://www.w3schools.com/css/default.asp)
 
 - [BEM](https://en.bem.info/)
     - [GetBem](http://getbem.com/)
     - [BEM 101](https://css-tricks.com/bem-101/)
 
+## Fonts/Icons
+
+- [Programming Fonts](https://app.programmingfonts.org/)
+
+- [Google Fonts](https://fonts.google.com/)
+
+- [Font Awesome](https://fontawesome.com/)
+
+- [Fontello](https://fontello.com/)
