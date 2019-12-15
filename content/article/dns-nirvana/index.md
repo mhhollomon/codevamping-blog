@@ -1,10 +1,10 @@
 ---
-title: "Journey to DNS Nirvana (almost)"
+title: "Journey to DNS Nirvana (maybe?)"
 date: 2019-12-14T14:01:35-05:00
 publishDate: 2019-12-14
 archives: "2019"
 draft: true
-tags: []
+tags: ["netlify", "dns", "domain-setup"]
 resources:
     - name: hero
       src: "<image filename>"
@@ -79,7 +79,6 @@ So, I did what I wanted, but uncovered another issue. Apparently, none of my
 computers is picking up the ipv6 name servers via dhcp - or the router isn't
 sending them, even though the configuration says to do so.
 
-More digging. Netlify does not seem to have ipv6 name servers.
 
 
 ## Performance
@@ -113,7 +112,28 @@ See above.
 Well, I won't reach total Nirvana because I can't afford it. Oh, well.
 
 ### (Recommendation) No CAA records found.
-{{<side-note>}}TBD{{</side-note>}}
+[CAA - Certification Authority
+Authorization](https://support.dnsimple.com/articles/caa-record/) is a
+statement about which Certificate Authorities can issue certificates for the
+domain. If CAA records are available for a domain, the CA is not supposed to
+issue certificates unless they are on the list. Also, user agents (web
+browsers) are supposed to reject a certificate if it is issued by a CA other
+than the ones on the list.
+
+Netlify uses [Let's Encrypt](https://letsencrypt.org) or most of the customer
+side domains. The certificates issued are for both the apex domain
+(codevamping.com) as well as a wildcard for all subdomains (*.codevamping.com).
+The CAA records needs to give `letsencrypt.org` autority for both
+
+```txt
+$ dig codevamping.com CAA
+codevamping.com.        3600    IN      CAA     0 issuewild "letsencrypt.org"
+codevamping.com.        3600    IN      CAA     0 issue "letsencrypt.org"
+codevamping.com.        3600    IN      CAA     0 iodef "mailto:mhhollomon@gmail.com"
+```
+
+The `iodef` record tells the CA where to send reports that somebody asked them
+to issue a certificate and the CA was not on the list.
 
 ## DNS Records
 
@@ -130,10 +150,10 @@ listed in the SPF record for domain it claims to be coming from, many mail
 gateways will mark the message as spam. Or at the very least, the message will
 be marked as "via" the true sending domain as you can see below.
 
-{{<resource_figure "redeploy-email.png">}}
+{{<resource_figure "bad-email.png">}}
 
-My outgoing email is handled by [SendGrid](https://sendgrid.com/).
-After the reading I knew that I needed to add a TXT record that looked something
+My outgoing email is handled by [SendGrid](https://sendgrid.com/).  After all
+the reading I knew that I needed to add a SPF/TXT record that looked something
 like:
 
 ```txt
@@ -146,15 +166,33 @@ nobody else (`~all`) can [^1].
 [^1]: To be exact the `~` means to "view with suspicion" - not totally reject.
   To get a reject, use a minus sign : `-` (hard spf check failure).
 
-Figuring out what that `something` required a support ticket with SendGrid
-which took 3 days for them to action. Fair enough - I'm not giving them any
-money.
+{{<side-note>}}To be clear, there **is** an SPF RR type, but that is **not**
+what you want. Google will happily use those, but both dnsspy and dnschecker
+agree that the record type should be **TXT**. So the dig session will look
+like:
+```txt
+$ dig codevamping.com TXT +noall +answer
+codevamping.com.        3600    IN      TXT     "v=spf1 include:u14122663.wl164.sendgrid.net ~all"
+```
+{{</side-note>}}
+
+
+Figuring out what that `something` was bit of a challenge. On the SendGrid
+console there was a "Verify Domain" wizard that led me through some steps
+including adding some CNAME records to my domain that pointed back to
+`sendgrid.net`. One of those records contained a hostname, that when I looked
+up the SPF record contained the ip address of the host that the emails were
+coming from. So, that is what I needed in _my_ SPF record.
 
 After that, it was a quick trip to Netlify to update the domain records.
 
 Dig shows the SPF record, but to really test, I had to wait until the [next
 status email came from the domain]({{<relref
 "getting-started-with-google-cloud-functions/index" >}}).
+
+{{<resource_figure "good-email.png">}}
+
+Nice! Completely white-labelled to my domain.
 
 
 ### (Recommendation) No DMARC records have been found.
@@ -167,6 +205,10 @@ We took care of this as a part of ipv6 name server thing above. So, nothing
 more to do.
 
 ## Rescan
+
+{{/*
+More digging. Netlify does not seem to have ipv6 name servers.
+*/}}
 
 
 ## Thoughts
