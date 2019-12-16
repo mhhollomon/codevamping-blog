@@ -24,7 +24,7 @@ markup:
         renderer:
             unsafe: true
     highlight:
-        style: vs
+        style: autumn
 
 params:
     siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"

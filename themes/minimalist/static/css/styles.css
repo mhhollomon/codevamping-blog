@@ -570,6 +570,10 @@ hr {
     line-height: 1.65;
 }
 
+.post ol {
+    line-height: 1.65;
+}
+
 
 /* Hanging indent on our section headers */
 .post h2,
