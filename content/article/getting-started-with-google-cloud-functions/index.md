@@ -473,8 +473,8 @@ function. This will take you to a page with all sorts of information on the
 function. If you scroll near the bottom, you will see your environment
 variable with the API key. Click on "testing" near the top.
 
-Copy and Paste in the object definition we created in `send-msg.sh` and click
-on the "Test the function" button. If all goes according to plan, you will get
+Copy and Paste the object definition we created in `send-msg.sh` and click on
+the "Test the function" button. If all goes according to plan, you will get
 your email and the webhook will be activated. The "View Logs" entry near the
 top will take you where you can see the logs.
 
@@ -484,7 +484,7 @@ the function.
 ```bash
 gcloud scheduler jobs create pubsub subnsend-trigger  \
 	--project ${PROJECT_ID} \
-	--timezone="America/New_York" --topic=subnsend \
+	--time-zone="America/New_York" --topic=subnsend \
     --schedule="10 5 * * *" \
 	--message-body="{}" --description="trigger the subNSend function"
 ```
