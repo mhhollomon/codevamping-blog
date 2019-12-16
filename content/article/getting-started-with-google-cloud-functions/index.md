@@ -1,9 +1,8 @@
 ---
 title: "Getting Started With Google Cloud Functions"
 date: 2019-12-09T18:21:23-05:00
-publishDate: 2019-12-09
+publishDate: 2019-12-15
 archives: "2019"
-draft: true
 tags: ["gcp", "nodejs"]
 resources:
     - name: hero
@@ -20,7 +19,7 @@ resources:
 Google has created a *lot* of documentation around the use and creation of
 cloud functions. But it is a bit scattered and can be hard to piece together.
 
-This article is an attempt to bring the basics it into one place for easy
+This article is an attempt to bring the basics into one place for easy
 reference.  Along the way, I'll hopefully add a bit of guidance as well.
 
 <!--more-->
@@ -33,9 +32,11 @@ We are going to build a function that :
 1. Sends email about it all.
 
 ### The Motivation
-This will actually be the starting point for a system to automate redeploys on
-a hugo generated website hosted on netlify. In later articles, I will build on
-it to do more.
+
+This will actually be the starting point for a system to automate redeploys of
+a [hugo](https://gohugo.io/) generated website hosted on
+[Netlify](https://netlify.com). In later articles, I will build on it to do
+more.
 
 However, the main points here can actually be used for many scenarios. And
 learning basics of the GCP ecosystem is the main focus.
@@ -45,7 +46,7 @@ learning basics of the GCP ecosystem is the main focus.
 I'm assuming
 - You are starting from scratch with GCP.
 - You are working in some variety of Linux.
-- You are going to be programming in node.
+- You are going to be programming in javascript.
 
 That last is not a small matter. While Google officially supports multiple
 languages (node, go, python, and more) node has the most mature support and
@@ -83,10 +84,9 @@ well.
 
 ## Install Python
 
-The Cloud SDK is a python application.
-The Google documents say that python 3 is not yet fully supported. But I have
-had no trouble with it. And I suspect that any problems will be ironed out
-pretty fast.
+The Cloud SDK is a python application. The Google documents say that python 3
+is not yet fully supported. But I have had no trouble with it. And I suspect
+that any problems will be ironed out pretty fast.
 
 Use Python 3 unless you have a really good reason to do otherwise.
 
@@ -124,12 +124,12 @@ server when files are changed.
 
 ### SubPub Difference
 
-Since our function will be resonding to a SubPub message, we need to do things a
+Since our function will be responding to a SubPub message, we need to do things a
 bit differently from the "helloWorld" example on the Framework webpage.
 
 By default, the Framework sets up so that the function entry point responds to
 a GET command on the end point URL. The framework will auto receive and
-unmarshall all the headers and the body of the request and provides that as the
+unmarshal all the headers and the body of the request and provides that as the
 `req` argument to the function.
 
 For PubSub, the Framework instead sets up so that the function entry point
@@ -201,7 +201,7 @@ URL: http://localhost:8080/
 That's promising. No errors. But how do we trigger it?
 
 We'll use `curl` with a crafted json string. The `json` must define an object
-that looks like an event - in or case, a publishing event.
+that looks like an event - in our case, a publishing event.
 
 Put the following in a file `send-msg.sh`
 
@@ -255,16 +255,16 @@ Nice! Our first requirement is out of the way.
 ## Version 2 -Trigger a webhook
 
 Before we code, we need to make a decision - where to store the endpoint URL
-for the webhook. Placing directly in the code isn't good. Magic strings and
+for the webhook. Placing it directly in the code isn't good. Magic strings and
 constants are not good. Also, that will make the endpoint visible in our
 repository. Probaby not a good thing.
 
 Creating a `const` to hold it isn't any better.
 
-And really a config file not much better either. Though we can take steps to
-make "not horrible". So, that is what we'll do. We will add the URL to a config
-file and require it in. There are better ways to do this, but in order to
-concentrate on the essentials we'll go with it.
+And really, a config file is not much better either. Though we can take steps
+to make it "not horrible". So, that is what we'll do. We will add the URL to a
+config file and require it in. There are better ways to do this, but in order
+to concentrate on the essentials we'll go with it.
 
 Create the file `subnsend.json` with the following contents:
 ```json
@@ -350,7 +350,7 @@ Manager](https://cloud.google.com/secret-manager/docs/) in a later article.
 
 ### Storing Addresses
 
-We will also need to store the "to" and "From" addresses for the call to the
+We will also need to store the "To" and "From" addresses for the call to the
 mail API. But these will fit nicely into the `subnsend.json` file that we
 already have.
 
@@ -360,7 +360,7 @@ for these configuration options.
 
 ### Now, the code
 
-New lines re highlighted
+New lines are highlighted
 
 ```javascript {hl_lines=[2,"20-29"]}
 const request = require('request');
@@ -426,24 +426,110 @@ Don't use the same address for both "to" and "from". Most spam detectors don't
 really like that.
 {{</side-note>}}
 
+
+## Deploy to Google Cloud
+
+We've built and test successfully. Time to go to production.
+
+First we need to authenticate to GCP.
+
 ```bash
 gcloud auth login
 ```
 
-```txt
-gcloud functions deploy subnsend --runtime nodejs10 --trigger-topic subnsend --project $project-id
-
-WARNING: Function created with limited-access IAM policy. To enable
-unauthorized access consider "gcloud alpha functions add-iam-policy-binding
-redeploy --member=allUsers --role=roles/cloudfunctions.invoker"
-```
-
-
-Go to the console - hamburger menu - go to functions - find your function.
-click on it and you can test by sending the same data.
+By default, when we deploy, all the files in the current directory are copied
+to the cloud storage. There is definitely things we dont want taking up space.
+Lets tell `gcloud` to ignore them.
 
 ```bash
-gcloud scheduler jobs create pubsub subnsend-trigger  --project $project-id \
-    --timezone="America/New_York" --topic="subnsend" --schedule="10 5 * * *" \
-    --message-body="{}" --description="trigger the subnsend function"
+cat << _EOM_ > .gcloudignore
+.git
+.gitignore
+.gcloudignore
+node_modules
+# for testing - don't need to deploy
+send-msg.sh
 ```
+
+Now, lets deploy the function
+
+
+```bash
+gcloud functions deploy subnsend \
+    --runtime nodejs10 --trigger-topic subnsend \
+    --project $PROJECT_ID \
+    --set-env-var EMAIL_API_KEY="${EMAIL_API_KEY}"
+```
+
+This will a few moments, especially the first time. There are quite a few bits
+that need to be provisioned.
+
+Now go to the [cloud console](https://console.cloud.google.com/functions). If
+needed, choose the correct project in the drop-down just to the right of the
+Google Cloud Platform name.
+
+You should be able to see your function there. Click on the name of the
+function. This will take you to a page with all sorts of information on the
+function. If you scroll near the bottom, you will see your environment
+variable with the API key. Click on "testing" near the top.
+
+Copy and Paste in the object definition we created in `send-msg.sh` and click
+on the "Test the function" button. If all goes according to plan, you will get
+your email and the webhook will be activated. The "View Logs" entry near the
+top will take you where you can see the logs.
+
+Last, but certainly not least, lets create the Scheduler job that will trigger
+the function.
+
+```bash
+gcloud scheduler jobs create pubsub subnsend-trigger  \
+	--project ${PROJECT_ID} \
+	--timezone="America/New_York" --topic=subnsend \
+    --schedule="10 5 * * *" \
+	--message-body="{}" --description="trigger the subNSend function"
+```
+
+Obviously the `--topic` must match the `--trigger-topic` from the function deploy.
+
+Now, go back the [cloud console for the
+scheduler](https://console.cloud.google.com/cloudscheduler) to see a list of
+your jobs.
+
+Press the the "RUN NOW" buuton at the far right to run the job and (hopefully)
+trigger the function.
+
+Done!
+
+## Further Thoughts
+
+### Why PubSub
+
+You might be wonder why I chose to use PubSub for this tutorial rather than the
+more common HTTP style function. There are a couple of reason.
+
+First, there is simply many more tutorials out there about HTTP functions. I
+wanted to do something a bit different.
+
+Second, I think PubSub is the better choice. As a rule-of-thumb use PubSub
+unless you can't. Why?
+
+- It is more secure. Since there is not a public URL endpoint, there isn't
+  as much to attack.
+- It is by nature async. Because of the message broker sits between the
+  publisher and the subscriber, the publisher does not need to wait for the
+  subscriber to finish processing. Thats not important here, but in general it
+  could be.
+- It is more composable. Multiple subscribers can recieve the same message
+  types. Multiple publishers can publish the same message types. Publishers and
+  Subscribers don't have to know about each other, reducing coupling.
+
+PubSub is not for everything. If the function must be callable from outside,
+then you'll need HTTP. If the function must return an answer, then you'll need
+HTTP.
+
+### Finally ...
+
+This obviously just scratches the surface. We haven't talked about Identity
+and Access Management. We haven't talked about data persistance, Etc...
+
+Hopefully, it will help you get started.
