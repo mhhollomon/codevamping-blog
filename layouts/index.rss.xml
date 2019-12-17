@@ -1,5 +1,5 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
-{{ $page_list := sort .Pages "PublishDate" "desc" }}
+{{ $page_list := sort ( where .Site.RegularPages "Type" "in" site.Params.mainSections) "PublishDate" "desc"}}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
@@ -14,7 +14,7 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
-    {{ range  $page_list }}
+    {{ range $page_list }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
