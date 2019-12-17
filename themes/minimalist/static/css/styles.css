@@ -523,7 +523,7 @@ hr {
 }
 
 .main-content__column {
-  margin: 0 2em 0 calc( var(--header-text-indent) * -1 );
+  margin: 0 4em 0 calc( var(--header-text-indent) * -1 );
 }
 
 
@@ -881,7 +881,8 @@ blockquote::before {
 .term-link {
   display: block;
   margin: .25em 0 .25em 0;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  line-height: 2.0em;
 }
 
 /************************************************************
