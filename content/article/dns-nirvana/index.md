@@ -1,17 +1,19 @@
 ---
 title: "Journey to DNS Nirvana (maybe?)"
 date: 2019-12-14T14:01:35-05:00
-publishDate: 2019-12-14
+publishDate: 2019-12-30
 archives: "2019"
-draft: true
 tags: ["netlify", "dns", "domain-setup"]
 resources:
     - name: hero
-      src: "<image filename>"
-      title: "<image title>"
+      src: "stair-601326_1280.jpg"
+      title: "stair"
       params:
         credits:
-            Markdown image credits
+            Image by <a
+            href="https://pixabay.com/users/stokpic-692575/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=601326">stokpic</a>
+            from <a
+            href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=601326">Pixabay</a>
 ---
 
 During my various hikes through the woods of the internet, I came across [DNS
@@ -99,15 +101,20 @@ price for me. I totally understand why you might want this if you are trying
 make money and can't afford to go down.
 
 ### (Warning) No DNSSEC records found.
-{{<side-note>}}TBD{{</side-note>}}
+
+After much searching on support forums and a couple emails, it turns out that
+Netlify does not support DNSSEC. This is actually a quite often requested
+feature.
+
+I can't fix this one.
 
 ### (Warning) All the nameservers are being operated from a single domain (nsone.net).
 
-See above.
+See above about "same provider".
 
 ### (Recomendation) All IPv4 nameservers appear to be hosted in the same country (US). You might want to consider spreading the nameservers geographically.
 
-See above.
+See above about "same provider".
 
 Well, I won't reach total Nirvana because I can't afford it. Oh, well.
 
@@ -120,7 +127,7 @@ issue certificates unless they are on the list. Also, user agents (web
 browsers) are supposed to reject a certificate if it is issued by a CA other
 than the ones on the list.
 
-Netlify uses [Let's Encrypt](https://letsencrypt.org) or most of the customer
+Netlify uses [Let's Encrypt](https://letsencrypt.org) for most of the customer
 side domains. The certificates issued are for both the apex domain
 (codevamping.com) as well as a wildcard for all subdomains (*.codevamping.com).
 The CAA records needs to give `letsencrypt.org` autority for both
@@ -197,21 +204,54 @@ Nice! Completely white-labelled to my domain.
 
 ### (Recommendation) No DMARC records have been found.
 
-{{<side-note>}}TBD{{</side-note>}}
+Needed to dig a bit about this one. This adds a cryptographic key to the SPF
+processing in order to help against DNS spoofing. SendGrid has a [resonablie
+write up](https://sendgrid.com/docs/glossary/dmarc/) on it.
 
-### (Recommendation)No IPv6 record has been found on the zone apex (codevamping.com).
+Another TXT record placed into my DNS via Netlify.
+
+### (Recommendation) No IPv6 record has been found on the zone apex (codevamping.com).
 
 We took care of this as a part of ipv6 name server thing above. So, nothing
 more to do.
 
 ## Rescan
 
-{{/*
-More digging. Netlify does not seem to have ipv6 name servers.
-*/}}
+I was able to fix a few things (SPF, DMARC, ipv6) and had to punt on some other
+things (DNS redundancy). Now, it was time for the retest...
 
+{{<resource_figure "dnsspy_rescan.png">}}
+
+
+Not much of an improvement. I thought at least I would get conenctivity up to
+100%.
+
+Wait... it is still saying that there are no ipv6 name servers.
+
+```txt
+$ dig dns1.p08.nsone.net. AAAA +noall +answer
+$
+```
+
+Oh.
+
+The name server assigned to my domain will _serve_ AAAA for my domain, but they
+_they themselves_ do not have AAAA records.
+
+So, you can talk to my domain using ipv6, but you can query the ipv6 address
+using ipv6.
 
 ## Thoughts
 
 Well, I certainly learned more about DNS and email/spam. And I set things up
 better for my domain.
+
+I think I'm going to have to transition back to using Google to name serve.
+That will clear up the ipv6 issue as well as allowing me to turn on DNSSEC.
+
+I'm not going to diss Netlify though. THey have done a great job hosting my
+website. But I'm glad I didn't register my domain through them.
+
+Hopefully this has been useful and thank you for sharing the journey - even if
+we didn't make to the destination.
+
