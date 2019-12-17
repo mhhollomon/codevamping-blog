@@ -883,3 +883,20 @@ blockquote::before {
   margin: .25em 0 .25em 0;
   font-size: 1.2em;
 }
+
+/************************************************************
+ *
+ * Archive Widget
+ *
+ ************************************************************/
+/* Styling for the archive links on the left */
+.archive {
+    text-align: left;
+}
+
+.archive__title {
+    text-align: center;
+}
+
+.archive a {
+    line-height: 2em;

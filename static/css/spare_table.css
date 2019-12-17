@@ -3,16 +3,6 @@ article a {
     color: #3333aa;
 }
 
-/* Styling for the archive links on the left */
-.archive {
-    text-align: left;
-}
-
-.archive h3 {
-    text-align: center;
-}
-
-
 /* figures for the page tops */
 /*.page-banner figcaption { */
 figcaption {
