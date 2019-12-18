@@ -1,3 +1,11 @@
+# hugo cache for image processing when using `hugo server`
 resources/
+
+# hugo output directory
 public/
+
+# vim temp files
 *.swp
+
+# Firebase cache
+.firebase/
