@@ -7,24 +7,47 @@ on:
 
 jobs:
   build:
+    name: Build
 
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout
-      uses: actions/checkout@v1
-      
-    - name: setup hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.61.0'
-        extended: true
+      - name: checkout
+        uses: actions/checkout@v1
+        
+      - name: setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.61.0'
+          extended: true
 
-    - name: build
-      run: hugo --minify
-    
-    - name: upload
-      uses: actions/upload-artifact@v1
-      with:
-        name: deploy-files
-        path: public
+      - name: build
+        run: hugo --minify
+      
+      - name: upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy-files
+          path: public
+
+  deploy:
+    name: Deploy
+    needs: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+
+      - name: download
+        uses: actions/download-artifact@master
+        with:
+          name: deploy-files
+          path: public
+
+      - name: deploy-to-firebase
+        uses: w9jds/firebase-action@master
+        with:
+          arg: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
