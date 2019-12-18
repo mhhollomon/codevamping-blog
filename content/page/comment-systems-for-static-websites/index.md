@@ -14,7 +14,7 @@ resources:
         credits: "Image by [Werner Moser](https://pixabay.com/users/pixelcreatures-127599/) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=265128)"
 ---
 
-(**Updated 2019-11-26**)
+(**Updated 2019-12-18**)
 
 Static websites are fast and tend to be simple to maintain. But the lack of
 processing on the server side means that comments (and other interaction) is a
@@ -52,9 +52,10 @@ CaaS = Comment as a service
     </td>
     <td> Hosted with Up to
     50,000 page views per month for about 5$/month. Or DIY hosting. No free tier.
-    But makes promises about privacy. Full OAuth support, so google, etc. Integrates with Akismet.
+    But makes promises about privacy. Full OAuth support, so google, etc.
+    Integrates with Akismet.
     Possible to integrate with your own auth system.
-    <br>[<i>I Don't see a way to specify the page to comment linkage.</i>]
+    Page id can be specified as part of &lt;script&gt; tag.
     </td>
 </tr>
 <tr>
