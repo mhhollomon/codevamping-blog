@@ -64,13 +64,16 @@ jobs:
       - name : generate_file
         run  : |
           hugo list future | cut -d',' -f2 | cut -dT -f1 | sort | head -1 > next_deploy_date.txt
+          echo "Deploy date will be"
+          cat next_deploy_date.txt
+          echo "END"
 
       - name : setup-gcloud
         uses : GoogleCloudPlatform/github-actions/setup-gcloud@master
         with :
           version : '274.0.0'
           service_account_email: ${{secrets.GCP_GITHUB_FID}}
-          service_accout_key: ${{secrets.GCP_GITHUB_KEY}}
+          service_account_key: ${{secrets.GCP_GITHUB_KEY}}
 
       - name : upload_file
         run  : |
