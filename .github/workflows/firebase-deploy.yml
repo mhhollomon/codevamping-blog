@@ -61,6 +61,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: setup hugo
+        uses: peaceiris/actions-hugo@master
+        with:
+          hugo-version: '0.61.0'
+          extended: true
+
       - name : generate_file
         run  : |
           hugo list future | cut -d',' -f2 | cut -dT -f1 | sort | head -1 > next_deploy_date.txt
@@ -77,4 +83,4 @@ jobs:
 
       - name : upload_file
         run  : |
-          gsutil cp next_deploy_date.txt gs://code-vamping.appspot.com
+          gsutil cp next_deploy_date.txt gs://redeploy-data.codevamping.com
