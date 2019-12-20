@@ -16,7 +16,7 @@ The site is built with the following techologies (and others):
 - [Hugo](https://gohugo.io) generates the static pages.
 - A (very) hacked up version of
   [minimalist](https://github.com/digitalcraftsman/hugo-minimalist-theme) is the theme.
-- [netlify](https://netlify.com) does the hosting.
+- [Firebase](https://firebase.google.com) does the hosting.
 - The icons are provided by [fontawesome](https://fontawesome.com)
 - The _Roboto_ and _Noto Sans_ fonts are provided by
   [google fonts](//https://fonts.google.com).

@@ -31,13 +31,12 @@ params:
     site_author : "Mark Hollomon"
     site_description : "Code Vamping - A (mostly) software development blog with music thrown in for spice"
     # Link custom assets relative to /static
-    avatar : "img/profile-image.png"
     header_background : "img/bass_header_narrow2.jpg"
     header_title : "Code Vamping"
     copyright : 
         Mark Hollomon 
         &middot; Powered by [Hugo](https://www.gohugo.io) 
-        &middot; Hosted by [Netlify](https://www.netlify.com/)
+        &middot; Hosted by [Firebase](https://firebase.google.com/)
         &middot; Icons by [FontAwesome](https://www.fontawesome.com/)
     custom_css : [ "css/spare_table.css"]
     custom_js  : []
