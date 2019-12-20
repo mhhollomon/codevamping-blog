@@ -8,7 +8,7 @@ on:
 env :
     BUCKET_URI: "gs://redeploy-data.codevamping.com"
 jobs:
-  schedule-redeploy
+  schedule-redeploy:
     name: Schedule Redeploy
     runs-on: ubuntu-latest
 
