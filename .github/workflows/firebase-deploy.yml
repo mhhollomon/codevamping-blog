@@ -1,9 +1,12 @@
 name: build deploy firebase
 
 on:
-  push:
-    branches: 
-      - master
+    - repository_dispatch
+
+    - push:
+        branches: 
+            - master
+
 
 jobs:
   build:

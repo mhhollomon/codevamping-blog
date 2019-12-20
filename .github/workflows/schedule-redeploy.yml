@@ -1,9 +1,11 @@
 name: schedule redeploy
 
 on:
-  push:
-    branches: 
-      - master
+    - repository_dispatch
+
+    - push:
+        branches: 
+            - master
 
 env :
     BUCKET_URI: "gs://redeploy-data.codevamping.com"
