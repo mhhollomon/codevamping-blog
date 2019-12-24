@@ -61,23 +61,30 @@
     {{end -}}
     */}}
 
+{{ if hasPrefix .Site.GoogleAnalytics "UA-" }}
+    {{ template "_internal/google_analytics.html" . }}
+{{end}}
+
     <!-- comments -->
 {{- if .IsPage }}
     {{- with .Site.Params.commentbox_project }}
-        <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+        <script deferred src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
     {{end}}
 {{end}}
-        {{ range .Site.Params.custom_css }}
-        <link rel="stylesheet" href="{{ . | relURL }}">
-        {{ end }}
+{{ range .Site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ . | relURL }}">
+{{ end }}
 {{- if .IsPage }}
-        {{ range .Resources.ByType "css" }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}">
-        {{ end }}
+    {{ range .Resources.ByType "css" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
 {{ end }}
 
 {{partial "html-header/inline-styles.html" . }}
 </head>
+
+<!--             -->
+
 <body>
     <header class="site-header">
         <div class="site-header__title-box transparent-layer">
