@@ -10,8 +10,6 @@ paginate : 10
 # Enable comments powered by Disqus by entering your disqus shortname
 #disqusShortname : "spf13"
 
-googleAnalytics: "UA-129577406-1"
-
 taxonomies:
     tag : tags
     archive : archives
@@ -27,7 +25,6 @@ markup:
         style: autumn
 
 params:
-    siteVerification: "Z9XN2bbeJ5_AbhfXSNjxlaVHZc1CAFrkUOq1mCvzhj4"
     site_author : "Mark Hollomon"
     site_description : "Code Vamping - A (mostly) software development blog with music thrown in for spice"
     # Link custom assets relative to /static
