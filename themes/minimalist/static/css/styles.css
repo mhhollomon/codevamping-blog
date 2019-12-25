@@ -408,7 +408,9 @@ body {
   color: #222222;
   font-family: "Noto Serif", serif;
   font-weight: 400;
-  transition: all 0.3s ease; }
+  line-height: 1.65;
+  transition: all 0.3s ease;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
@@ -854,6 +856,7 @@ blockquote::before {
 .highlight {
     border-left: 0.25em solid #e0e0e0;
     padding-left: 1em;
+    line-height: 1.3;
 }
 
 /************************************************************
