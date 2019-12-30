@@ -41,6 +41,12 @@ A list of web sites I have found useful or interesting
     - [GetBem](http://getbem.com/)
     - [BEM 101](https://css-tricks.com/bem-101/)
 
+- "Atomic" CSS
+    - [Let’s Define Exactly What Atomic CSS is](https://css-tricks.com/lets-define-exactly-atomic-css/)
+    - [The Case for Atomic / Utility-First
+      CSS](https://johnpolacek.github.io/the-case-for-atomic-css/)
+      Lots of good reference links.
+
 - Validators
     - [W3C HTML Validator](https://validator.w3.org/)
     - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
