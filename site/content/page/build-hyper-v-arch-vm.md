@@ -33,6 +33,8 @@ $HOSTNAME = (Get-WmiObject -Class Win32_ComputerSystem -Property Name).Name
 # create virtual ethernet switch. Find the "real" interface from
 # Get-NetAdapter and use it instead of EtherNet in the New-VMSwitch
 #
+# Not sure this is necessary. There is a "default" switch which should work.
+#
 Get-NetAdapter
 New-VMSwitch -name $SwitchName -NetAdapterName Ethernet -AllowManagementOS $true
 
@@ -164,6 +166,7 @@ pacman -S ttf-hack ttf-inconsolata cmake \
     nodejs-lts-dubnium npm
 
 npm install --global node-watch
+npm install --global grunt-cli
 ```
 
 
