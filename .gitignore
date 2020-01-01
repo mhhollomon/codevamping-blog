@@ -9,3 +9,6 @@ public/
 
 # Firebase cache
 .firebase/
+
+# node stuff
+node_modules/
