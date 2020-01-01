@@ -1,14 +1,9 @@
-name: build deploy firebase
+name: build with grunt
 
 on:
-    repository_dispatch :
-        branches: 
-            - master
-
     push:
         branches: 
-            - master
-
+            - grunt
 
 jobs:
   build:
@@ -30,10 +25,3 @@ jobs:
             env
             npm install grunt-cli && \
                 npm install && node_modules/grunt-cli/bin/grunt
-
-      - name: deploy-to-firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

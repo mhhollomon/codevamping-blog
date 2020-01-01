@@ -1,0 +1,24 @@
+{
+  "name": "codevamping",
+  "version": "1.0.0",
+  "description": "files for codevamping blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhhollomon/codevamping-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhhollomon/codevamping-blog/issues"
+  },
+  "homepage": "https://github.com/mhhollomon/codevamping-blog#readme",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-connect": "^2.1.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

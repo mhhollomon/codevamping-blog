@@ -2,10 +2,13 @@
 resources/
 
 # hugo output directory
-public/
+build/
 
 # vim temp files
 *.swp
 
 # Firebase cache
 .firebase/
+
+# node stuff
+node_modules/
