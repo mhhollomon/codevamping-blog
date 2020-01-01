@@ -64,6 +64,8 @@ module.exports = function(grunt) {
             args.push(`--baseUrl=http://${options.hostname}:${options.port}`);
             args.push('--buildDrafts=true');
             args.push('--buildFuture=true');
+        } else {
+            args.push('--minify');
         }
         hugo = require('child_process').spawn('hugo', args, { stdio: 'inherit'});
 
