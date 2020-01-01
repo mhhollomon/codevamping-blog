@@ -1,5 +1,4 @@
 function ip() {
-    console.log(`ip = ${process.env.IP}`);
     if (process.env.IP) {
         return process.env.IP;
     } else {
@@ -7,22 +6,14 @@ function ip() {
     }
 }
 
-function find_hugo() {
-    console.log("in find_hugo");
-    console.log(process.env);
-    /*
-    if (process.env.GITHUB_ACTIONS == 'true') {
-        process.env.PATH = 
-            '/home/runner/hugobin:/usr/share/rust/.cargo/bin:' + process.env.PATH;
-    }
-    */
-    return 'hugo';
-}
-
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        //
+        // stuff we'll need both for hugo and
+        // for grunt-contrib-connect
+        //
         hn : {
             hostname: ip(),
             port: 1313
@@ -35,13 +26,13 @@ module.exports = function(grunt) {
             options : {
                 hostname: '<%= hn.hostname %>',
                 port: '<%= hn.port%>',
-                executable : find_hugo()
             }
         },
 
 
         //
         // Tell grunt-contrib-connect to serve on the loop back.
+        //
         connect: {
             codevamping: {
                 options: {
@@ -90,10 +81,21 @@ module.exports = function(grunt) {
         hugo.on('error', (err) => { console.error(err); done(false); });
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    //
+    // Load tasks from plugins
+    //
+    let plugins = [ 
+        'grunt-contrib-watch',
+        'grunt-contrib-connect'
+    ];
+    for (plugin in plugins) {
+        grunt.loadNpmTasks(plugins[plugin]);
+    }
 
-    grunt.registerTask('edit', ['connect', 'watch']);
-    grunt.registerTask('dev', [ 'hugo:dev' ]);
+    //
+    // Define toplevel tasks
+    //
+    grunt.registerTask('edit',    ['connect', 'watch']);
+    grunt.registerTask('dev',     ['hugo:dev']);
     grunt.registerTask('default', ['hugo:dist']);
 };

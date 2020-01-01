@@ -26,7 +26,10 @@ jobs:
           extended: true
 
       - name: build
-        run: hugo --minify
+        run : |
+            env
+            npm install grunt-cli && \
+                npm install && node_modules/grunt-cli/bin/grunt
 
       - name: deploy-to-firebase
         uses: w9jds/firebase-action@master
