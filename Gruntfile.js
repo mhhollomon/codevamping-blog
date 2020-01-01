@@ -7,6 +7,13 @@ function ip() {
     }
 }
 
+function find_hugo() {
+    if (process.env.GITHUB_ACTIONS == 'true') {
+        return '/home/runner/hugobin/hugo';
+    } else {
+        return 'hugo';
+    }
+
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -16,10 +23,14 @@ module.exports = function(grunt) {
             port: 1313
         },
 
+        //
+        // Set up for the hugo action
+        //
         hugo : {
             options : {
                 hostname: '<%= hn.hostname %>',
                 port: '<%= hn.port%>',
+                executable : find_hugo()
             }
         },
 
@@ -57,7 +68,8 @@ module.exports = function(grunt) {
     grunt.registerTask('hugo', function(target) {
         done = this.async();
 
-        let options = this.options();
+        // by default, find hugo via the path
+        let options = this.options({ executable : 'hugo' } );
         console.log(options);
         args = ['--source=site', `--destination=../build/${target}`];
         if (target == 'dev') {
@@ -67,7 +79,7 @@ module.exports = function(grunt) {
         } else {
             args.push('--minify');
         }
-        hugo = require('child_process').spawn('hugo', args, { stdio: 'inherit'});
+        hugo = require('child_process').spawn(options.executable, args, { stdio: 'inherit'});
 
         hugo.on('close', () => { done(true); });
         hugo.on('error', (err) => { console.error(err); done(false); });
