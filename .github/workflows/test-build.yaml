@@ -20,5 +20,8 @@ jobs:
           hugo-version: '0.61.0'
           extended: true
 
+      - name: check env
+        run : env
+
       - name: build
         uses : elstudio/actions-js-build/build@master

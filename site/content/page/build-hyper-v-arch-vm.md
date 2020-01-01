@@ -160,7 +160,7 @@ usermod -a -G wheel mhh
 
 ```bash
 pacman -S ttf-hack ttf-inconsolata cmake \
-	make gcc clang git gvim \
+	make gcc clang git gvim tmux \
 	xorg-xauth jdk-openjdk python \
 	xterm xorg-xrdb firefox hugo \
     nodejs-lts-dubnium npm

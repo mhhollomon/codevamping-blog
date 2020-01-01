@@ -8,6 +8,8 @@ function ip() {
 }
 
 function find_hugo() {
+    console.log("in find_hugo");
+    console.log(process.env);
     if (process.env.GITHUB_ACTIONS == 'true') {
         return '/home/runner/hugobin/hugo';
     } else {
