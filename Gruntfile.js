@@ -13,6 +13,7 @@ function find_hugo() {
     } else {
         return 'hugo';
     }
+}
 
 module.exports = function(grunt) {
     grunt.initConfig({
