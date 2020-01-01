@@ -160,7 +160,10 @@ usermod -a -G wheel mhh
 pacman -S ttf-hack ttf-inconsolata cmake \
 	make gcc clang git gvim \
 	xorg-xauth jdk-openjdk python \
-	xterm xorg-xrdb firefox hugo
+	xterm xorg-xrdb firefox hugo \
+    nodejs-lts-dubnium npm
+
+npm install --global node-watch
 ```
 
 
