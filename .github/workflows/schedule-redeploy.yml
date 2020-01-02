@@ -28,7 +28,7 @@ jobs:
 
       - name : generate_file
         run  : |
-          hugo list future | cut -d',' -f2 | cut -dT -f1 | sort | head -1 > next_deploy_date.txt
+          hugo --source=site list future | cut -d',' -f2 | cut -dT -f1 | sort | head -1 > next_deploy_date.txt
           echo "Deploy date will be"
           cat next_deploy_date.txt
           echo "END"
