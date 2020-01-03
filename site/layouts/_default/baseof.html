@@ -75,24 +75,21 @@
         <script deferred src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
     {{- end}}
 {{- end}}
-{{ range .Site.Params.custom_css }}
-    <link rel="stylesheet" href="{{ . | relURL }}">
-{{ end }}
 {{- if .IsPage }}
     {{ range .Resources.ByType "css" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
     {{ end }}
 {{ end }}
 
-{{partial "html-header/inline-styles.html" . }}
 </head>
 
 <!--             -->
 
 <body>
-    <header class="site-header">
-        <div class="site-header__title-box transparent-layer">
-            <h2 class="site-header__title">{{ .Site.Params.header_title }}</h2>
+    <header class="w-full h-24 -z-1 bg-cover text-center bg-no-repeat bg-white bg-center" 
+        style="line-height: 5rem; background-image: url({{ .Site.Params.header_background | relURL }});" >
+        <div class="m-0 h-full text-center bg-gray" >
+            <span class="inline-block text-white font-medium md:text-7xl text-4xl align-middle">{{ .Site.Params.header_title }}</span>
         </div>
     </header>
     {{block "main" .}}
