@@ -37,7 +37,6 @@ params:
         &middot; Icons by [FontAwesome](https://www.fontawesome.com/)
     custom_css : [ "css/spare_table.css"]
     custom_js  : []
-    commentbox_project: "5721662469177344-proj"
 
     # Define which content types are shown on the homepage
     mainSections : ["article", "page"]

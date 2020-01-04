@@ -5,13 +5,7 @@ publishDate: 2020-01-06
 archives: "2020"
 tags: ["purgecss", "nodejs", "gist"]
 summary: "Small wrapper to run [purgecss](https://www.purgecss.org) on css from stdin."
-
-# resources:
-#- name: hero
-#src: "<image name here>"
-#title: "<title here>"
-#params:
-#credits: "<Markdown credit string here>"
+cvtype: "blog"
 ---
 
 The purgecss CLI does not (currently) read css from stdin. Here is a short node

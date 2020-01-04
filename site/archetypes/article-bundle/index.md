@@ -5,6 +5,7 @@ publishDate: {{ dateFormat "2006-01-02" now }}
 archives: "{{ dateFormat "2006" now }}"
 draft: true
 tags: []
+cvtype: "article"
 resources:
     - name: hero
       src: "<image filename>"

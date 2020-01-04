@@ -1,5 +1,17 @@
 <div class="summary-entry-header">
-{{ with .Resources.GetMatch "hero" }}
+{{ $type := "article" }}
+{{ $resource := .Resources.GetMatch "xsdf123" }}
+{{ with .Params.cvtype }}
+    {{ $type = . }}
+{{ end }}
+{{ if eq $type "article" }}
+    {{ $resource = .Resources.GetMatch "hero" }}
+{{ else if eq $type "blog" }}
+    {{ $headless := $.Site.GetPage "/blog-headless" }}
+    {{ $resource = $headless.Resources.GetMatch "hero" }}
+{{ end }}
+
+{{ with $resource }}
 <div style="display: table-cell; width: 100px">
     {{ $image := .Fill "100x100 Center" }}
     <img src="{{$image.RelPermalink}}" title="{{$image.Title}}" width="{{ $image.Width }}" height="{{ $image.Height }}">
