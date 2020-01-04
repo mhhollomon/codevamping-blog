@@ -1,7 +1,7 @@
 {{define "main"}}
 <div class="page-container">
     <main class= "main-content">
-        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+        {{ $paginator := .Paginate (sort (where .Site.RegularPages "Type" "in" site.Params.mainSections) "PublishDate" "desc") }}
         {{ range $paginator.Pages }}
 <article class="post-summary post">
     {{ partial "summary-article-header" . }}

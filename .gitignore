@@ -3,6 +3,7 @@ resources/
 
 # hugo output directory
 build/
+public/
 
 # vim temp files
 *.swp

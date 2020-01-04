@@ -1,7 +1,7 @@
 {{define "main"}}
 <div class="page-container">
     <main class= "main-content">
-        {{ $paginator := .Paginate .Data.Pages }}
+        {{ $paginator := .Paginate (sort .Data.Pages "PublishDate" "desc") }}
         {{ range $paginator.Pages }}
 <article class="post-summary post">
     {{ partial "summary-article-header" . }}
