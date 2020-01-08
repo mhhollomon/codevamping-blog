@@ -1,5 +1,4 @@
 {{define "main"}}
-<div class="page-container">
     <main class= "main-content">
         {{ $paginator := .Paginate (sort .Data.Pages "PublishDate" "desc") }}
         {{ range $paginator.Pages }}
@@ -11,8 +10,4 @@
         {{ end }}
         {{ partial "pagination" . }}
     </main>
-
-    {{ partial "sidebar" . }}
-</div>
-{{ partial "footer" . }}
 {{ end }}

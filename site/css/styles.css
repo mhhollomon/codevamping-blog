@@ -17,22 +17,6 @@
     @apply border-t border-b border-l-4 border-gray-400 leading-snug p-4 overflow-x-auto;
 }
 
-/********************************************/
-@tailwind utilities;
-
-/* Tables
-========================================================================== */
-/**
- * Remove most spacing between table cells.
- */
-.post table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-td,
-th {
-  padding: 0; }
-
 /* -----------------------------------------------------------------------------
    -----------------------------------------------------------------------------
 
@@ -52,36 +36,13 @@ th {
 /**** Variable *************************************/
 
 :root {
-  --header-text-indent: -30px;
+  --header-text-indent: -2rem;
   --site-banner-height: 120px;
 }
 /*
  * Most of the website is built in Markdown via hugo. So selectors will be
  * elements rather than classes.
  */
-
-/* 
- * default body styling.
- * "Noto Serif" is from google fonts
- */
-body {
-  color: #222222;
-  font-family: "Noto Serif", serif;
-  font-weight: 400;
-  line-height: 1.65;
-  transition: all 0.3s ease;
-}
-
-.post h1, 
-.post h2, 
-.post h3, 
-.post h4, 
-.post h5, 
-.post h6 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300; 
-  @apply my-3;
-}
 
 
 /**********anchor tags ********/
@@ -110,40 +71,6 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     color: #a2a2a2; 
 }
 
-.post h1 {
-    @apply text-3xl;
-}
-
-.post h2 {
-    @apply text-2xl;
-}
-
-.post h3 {
-    @apply text-lg;
-}
-
-/************ horizontal rule ***********/
-.post hr {
-  border: 0;
-  border-top: 1px #E4E4E4 solid;
-  margin: 40px 0; }
-
-
-/************ Site header **********************/
-
-/* pages are built from flex box. */
-/*
- * This is the top-level container 
- * however, the site header will be above (and outside) this
- */
-.page-container {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap; 
-  justify-content: center;
-  margin: 0 auto;
-  padding: 50px 0 0 0; 
-}
 
 .side-bar {
   text-align: center;
@@ -152,20 +79,23 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 }
 
 /* padding is to make room for the
- * -1em text-indent used by the subheadings.
+ * -2rem text-indent used by the subheadings.
  */
 .main-content {
-  width: 70%;
-  margin-right: 5%;
   padding-left: calc( var(--header-text-indent) * -1 );
+  @apply w-70pct m-4;
+}
+
+@screen md {
+.main-content {
+  padding-left: calc( var(--header-text-indent) * -1 );
+  @apply w-70pct m-0 mr-5pct;
+}
+
 }
 
 .main-content__title {
   text-indent: var(--header-text-indent);
-}
-
-.main-content--flex {
-  display: flex;
 }
 
 .main-content__column {
@@ -186,9 +116,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
  * 
  *************************************************/
 .post {
-  margin-bottom: 60px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid #cccccc; 
+  @apply mb-20 pb-20 border-b border-solid border-cgray;
 }
 
 /*****
@@ -213,18 +141,25 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 
 
 .post p {
-  line-height: 1.65; 
-  @apply my-4;
+  @apply leading-relaxed my-4;
 }
 
 .post ul {
-    line-height: 1.65;
+    @apply leading-relaxed list-disc;
 }
 
 .post ol {
-    line-height: 1.65;
+    @apply leading-relaxed list-decimal;
 }
 
+.post h1, 
+.post h2, 
+.post h3, 
+.post h4, 
+.post h5, 
+.post h6 {
+  @apply font-sans my-3;
+}
 
 /* Hanging indent on our section headers */
 .post h2,
@@ -233,6 +168,31 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 .post h5,
 .post h6 {
   text-indent: var(--header-text-indent);
+}
+
+.post h1 {
+    @apply text-3xl;
+}
+
+.post h2 {
+    @apply text-2xl;
+}
+
+.post h3 {
+    @apply text-lg;
+}
+
+/************ horizontal rule ***********/
+.post hr {
+  @apply border-gray-400 border-t border-solid my-10;
+}
+
+/**
+ * Remove most spacing between table cells.
+ */
+.post table {
+  border-collapse: collapse;
+  border-spacing: 0; 
 }
 
 
@@ -318,60 +278,13 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   margin-bottom: 0; }
 
 
+/*******Button *****************************
+ * Currently only used in pagination
+ *******************************************/
 .btn {
-  border: solid 1px #ececec;
-  background-color: #FFF;
-  width: 100px;
-  height: 35px;
-  display: block;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  line-height: 35px;
-  font-size: 13px;
-  color: #000;
+  @apply block w-24 h-10 bg-white text-black font-sans text-center text-base
+    border-cgray border rounded-sm;
 }
-.btn:hover {
-    background-color: #2a373d;
-    border-color: #2a373d;
-    color: #FFF; 
-}
-
-.home {
-  width: 140px; }
-
-/**************** Pagination ************/
-.pagination {
-  position: relative;
-  height: 35px;
-  width: 100%;
-  margin-bottom: 60px; 
-}
-
-/* position hard left */
-.pagination__newer {
-  position: absolute;
-  left: 0;
-  top: 0; 
-}
-
-/* postion hard right */
-.pagination__older {
-  position: absolute;
-  right: 0;
-  top: 0; 
-}
-
-.pagination__counter {
-  text-align: center;
-  line-height: 35px;
-  font-size: 13px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #979797; }
 
 .side-bar {
   font-family: "Roboto", sans-serif;
@@ -427,60 +340,12 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 }
 
 
-/*****************  Responsive **********************/
-/* fix things up for smaller screens
- *
- */
-@media only screen and (min-width: 720px) {
-  .page-container {
-    width: 100%; 
-  }
-
-  .site-header__title-box {
-      height: var(--site-banner-height);
-  }
-
-  .site-header__title {
-      font-size: 56px;
-  }
-}
-
-@media only screen and (max-width: 719px) {
-  .page-container {
-    width: 90%;
-    padding-top: 25px; }
-
-  .side-bar,
-  .main-content {
-    width: 100%;
-    margin: 0; }
-
-  .side-bar {
-    margin-bottom: 60px; }
-
-  .site-header {
-    height: var(--site-banner-height);
-    transition: all 0.3s ease;
-  }
-
-
-  .site-header__title-box {
-      height: var(--site-banner-height);
-  }
-
-  .site-header__title {
-    font-size: 36px;
-    background-size: 90px 74px; 
-  } 
-}
-
-
 /************************************************************
  *
  * Blockquotes for Markdown
  *
  ************************************************************/
-blockquote {
+.post blockquote {
     background-color: #dddddd; 
     border-left: 2px solid #888888;
     padding-left: 6px;
@@ -488,7 +353,7 @@ blockquote {
     position: relative;
 }
 
-blockquote::before {
+.post blockquote::before {
     content: "QUOTE";
     font-style: italic;
     font-size: 0.7em;
@@ -512,18 +377,6 @@ blockquote::before {
 
 .navbar-item {
     padding: 6px;
-}
-
-/************************************************************
- *
- * Term links
- *
- ************************************************************/
-.term-link {
-  display: block;
-  margin: .25em 0 .25em 0;
-  font-size: 1.3em;
-  line-height: 2.0em;
 }
 
 /************************************************************
@@ -593,3 +446,4 @@ figcaption {
     font-size: 14px;
 }
 
+@tailwind utilities;

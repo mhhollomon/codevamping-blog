@@ -85,15 +85,27 @@
 
 <!--             -->
 
-<body>
-    <header class="w-full h-24 -z-1 bg-cover text-center bg-no-repeat bg-white bg-center" 
-        style="line-height: 5rem; background-image: url({{ .Site.Params.header_background | relURL }});" >
-        <div class="m-0 h-full text-center bg-gray" >
-            <span class="inline-block text-white font-medium md:text-7xl text-4xl align-middle">{{ .Site.Params.header_title }}</span>
+<!--
+    The body is made up of threee blocks.
+    The header that contains the site banner and name
+    A "main" block that contians the side-bar and the main content
+    A footer tha contains copy-right etc.
+-->
+
+<body class="color-2gray font-serif leading-relaxed">
+    <header class="w-full bg-cover bg-no-repeat bg-white bg-center flex items-center content-center" 
+        style="background-image: url({{ .Site.Params.header_background | relURL }});" >
+        <div class="m-auto text-center bg-gray" >
+            <span class="text-white font-medium md:text-7xl text-4xl align-middle">{{ .Site.Params.header_title }}</span>
         </div>
     </header>
+    <div class="container lg:container mx-auto flex flex-col md:flex-row-reverse justify-center pt-16">
     {{block "main" .}}
     {{end}}
+    {{ partial "sidebar" . }}
+    </div>
+
+{{- partial "footer" . }}
 </body>
 
 </html>
