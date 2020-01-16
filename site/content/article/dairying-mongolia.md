@@ -3,7 +3,7 @@ title: "Dairying in Mongolia"
 date: "2018-11-07"
 publishDate: "2018-11-07"
 archives: "2018"
-tags: ["Mongolia", "HeritageDaily", "lactase"]
+tags: ["Mongolia", "HeritageDaily", "lactase", "archeology"]
 ---
 This will be a bit off from the normal fodder for this blog, but I thought it was interesting.
 

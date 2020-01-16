@@ -555,6 +555,10 @@ hr {
   margin-bottom: 10px; 
 }
 
+.post h2 a.footnote-ref {
+    font-size: 75%;
+}
+
 /* don't let images overflow and let the browser keep
  * the aspect-ratio constant
  */
