@@ -196,7 +196,7 @@ After that, it was a quick trip to Netlify to update the domain records.
 
 Dig shows the SPF record, but to really test, I had to wait until the [next
 status email came from the domain]({{<relref
-"getting-started-with-google-cloud-functions/index" >}}).
+"getting-started-with-google-cloud-functions" >}}).
 
 {{<resource_figure "good-email.png">}}
 
