@@ -1,5 +1,3 @@
-theme : "minimalist"
-
 baseurl : "https://www.codevamping.com/"
 languageCode : "en-us"
 title : "Code Vamping"
@@ -35,8 +33,6 @@ params:
         &middot; Powered by [Hugo](https://www.gohugo.io) 
         &middot; Hosted by [Firebase](https://firebase.google.com/)
         &middot; Icons by [FontAwesome](https://www.fontawesome.com/)
-    custom_css : [ "css/spare_table.css"]
-    custom_js  : []
 
     # Define which content types are shown on the homepage
     mainSections : ["article", "page"]

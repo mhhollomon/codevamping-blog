@@ -31,7 +31,7 @@ DNS Spy offered a free scan, so why not.
 
 Okay, thats not ... _bad_. 
 
-Okay. Maybe I'm more attached to my ego than I thought. Lets see if we can make
+Okay. Maybe I'm more attached to my ego than I thought. Let's see if we can make
 DNS Spy happy and reach DNS Nirvana.
 
 The detailed results of the scan are divided into 4 categories with warnings
@@ -129,8 +129,8 @@ than the ones on the list.
 
 Netlify uses [Let's Encrypt](https://letsencrypt.org) for most of the customer
 side domains. The certificates issued are for both the apex domain
-(codevamping.com) as well as a wildcard for all subdomains (*.codevamping.com).
-The CAA records needs to give `letsencrypt.org` autority for both
+(codevamping.com) as well as a wildcard for all subdomains (\*.codevamping.com).
+The CAA records needs to give `letsencrypt.org` authority for both.
 
 ```txt
 $ dig codevamping.com CAA
@@ -173,10 +173,11 @@ nobody else (`~all`) can [^1].
 [^1]: To be exact the `~` means to "view with suspicion" - not totally reject.
   To get a reject, use a minus sign : `-` (hard spf check failure).
 
-{{<side-note>}}To be clear, there **is** an SPF RR type, but that is **not**
+{{<side-note>}}To be clear, there __is__ an SPF RR type, but that is __not__
 what you want. Google will happily use those, but both dnsspy and dnschecker
-agree that the record type should be **TXT**. So the dig session will look
+agree that the record type should be __TXT__ So the dig session will look
 like:
+
 ```txt
 $ dig codevamping.com TXT +noall +answer
 codevamping.com.        3600    IN      TXT     "v=spf1 include:u14122663.wl164.sendgrid.net ~all"
@@ -195,7 +196,7 @@ After that, it was a quick trip to Netlify to update the domain records.
 
 Dig shows the SPF record, but to really test, I had to wait until the [next
 status email came from the domain]({{<relref
-"getting-started-with-google-cloud-functions/index" >}}).
+"getting-started-with-google-cloud-functions" >}}).
 
 {{<resource_figure "good-email.png">}}
 
@@ -205,7 +206,7 @@ Nice! Completely white-labelled to my domain.
 ### (Recommendation) No DMARC records have been found.
 
 Needed to dig a bit about this one. This adds a cryptographic key to the SPF
-processing in order to help against DNS spoofing. SendGrid has a [resonablie
+processing in order to help against DNS spoofing. SendGrid has a [reasonable
 write up](https://sendgrid.com/docs/glossary/dmarc/) on it.
 
 Another TXT record placed into my DNS via Netlify.
@@ -238,7 +239,7 @@ Oh.
 The name server assigned to my domain will _serve_ AAAA for my domain, but they
 _they themselves_ do not have AAAA records.
 
-So, you can talk to my domain using ipv6, but you can query the ipv6 address
+So, you can talk to my domain using ipv6, but you can't query the ipv6 address
 using ipv6.
 
 ## Thoughts
@@ -249,9 +250,8 @@ better for my domain.
 I think I'm going to have to transition back to using Google to name serve.
 That will clear up the ipv6 issue as well as allowing me to turn on DNSSEC.
 
-I'm not going to diss Netlify though. THey have done a great job hosting my
+I'm not going to diss Netlify though. They have done a great job hosting my
 website. But I'm glad I didn't register my domain through them.
 
 Hopefully this has been useful and thank you for sharing the journey - even if
 we didn't make to the destination.
-

@@ -166,7 +166,8 @@ pacman -S ttf-hack ttf-inconsolata cmake \
     nodejs-lts-dubnium npm
 
 npm install --global node-watch
-npm install --global grunt-cli
+npm install --global live-server
+# probably others I've missed
 ```
 
 

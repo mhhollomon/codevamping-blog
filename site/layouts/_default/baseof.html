@@ -75,28 +75,37 @@
         <script deferred src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
     {{- end}}
 {{- end}}
-{{ range .Site.Params.custom_css }}
-    <link rel="stylesheet" href="{{ . | relURL }}">
-{{ end }}
 {{- if .IsPage }}
     {{ range .Resources.ByType "css" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
     {{ end }}
 {{ end }}
 
-{{partial "html-header/inline-styles.html" . }}
 </head>
 
 <!--             -->
 
-<body>
-    <header class="site-header">
-        <div class="site-header__title-box transparent-layer">
-            <h2 class="site-header__title">{{ .Site.Params.header_title }}</h2>
+<!--
+    The body is made up of threee blocks.
+    The header that contains the site banner and name
+    A "main" block that contians the side-bar and the main content
+    A footer tha contains copy-right etc.
+-->
+
+<body class="color-2gray font-serif leading-relaxed">
+    <header class="w-full bg-cover bg-no-repeat bg-white bg-center flex items-center content-center" 
+        style="background-image: url({{ .Site.Params.header_background | relURL }});" >
+        <div class="m-auto text-center bg-gray" >
+            <span class="text-white font-medium md:text-7xl text-4xl align-middle">{{ .Site.Params.header_title }}</span>
         </div>
     </header>
+    <div class="container lg:container mx-auto flex flex-col md:flex-row-reverse justify-center pt-16">
     {{block "main" .}}
     {{end}}
+    {{ partial "sidebar" . }}
+    </div>
+
+{{- partial "footer" . }}
 </body>
 
 </html>
