@@ -23,7 +23,7 @@ resources:
 
 ## Lifestyles of the Neolithic
 
-It is the late 6th Century BC in Central Europe. You and your clan are trying
+It is  bout 8,000 years ago in Central Europe. You and your clan are trying
 out the latest lifestyle craze "farming". You live in what modern scholars call
 "longhouses" - 15-20 feet wide and around 100 feet long, short walls with an
 extreme pitched roof.
@@ -78,17 +78,18 @@ Using the fact that orientation will drift over time, the scientist can at
 least establish a likely *relative* order to the houses. Then prudent sampling
 can firm up the time range.
 
-And it get better. Scine all we need to know is where the houses were and how
+And it get better. Since all we need to know is where the houses were and how
 they were oriented, we don't even need to do a full-scale excavation. Using a
 [geophyiscal
 survey](https://study.com/academy/lesson/geophysical-surveys-definition-methods.html)
-of magnetic anomalies longhouses can be found based on the disturbed soil in
-trenches assoicated with the buildings. A large number of buildings over a wide
+of magnetic anomalies, longhouses can be found based on the disturbed soil in
+trenches associated with the buildings. A large number of buildings over a wide
 area can be found. The above insight can be used to place them in relative
-time. A select few can be excavated toy yield an absolute date for the
+time. A select few can be excavated to yield an absolute date for the
 sequence.
 
-
+In a world where science frequently gets short time and short money, anything
+that allows to extract more information with less is a useful tool.
 
 ## Resources
 
