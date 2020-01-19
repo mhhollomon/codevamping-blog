@@ -4,22 +4,33 @@
   "description": "files for codevamping blog",
   "main": "index.js",
   "watch": {
-    "build-and-serve": {
+    "hugo:dev": {
       "patterns": [
         "site"
       ],
-      "extensions": "html,css,md"
+      "extensions": "html,md"
+    },
+    "tailwind:dev": {
+      "patterns": [
+        "site",
+        "tailwind.config.js"
+      ],
+      "extensions": "css"
     }
   },
   "scripts": {
     "test": "echo 'Error: no test specified' && exit 1",
     "hugo:dev": "hugo --environment=development --source=site --destination=../build/dev --buildFuture --buildDrafts --baseUrl=http://0.0.0.0:1313",
     "hugo:dist": "hugo --source=site --destination=../build/dist --minify",
-    "static:dev": "live-server --host=0.0.0.0 --no-browser --port=1313 ./build/dev",
-    "build:dev": "npm run hugo:dev && npm run static:dev",
-    "build:dist": "npm run hugo:dist",
-    "build-and-serve": "npm run build:dev && npm run static:dev",
-    "edit": "npm-watch build-and-serve"
+    "tailwind:dev": "tailwind build site/css/styles.css -o build/dev/css/styles.css",
+    "tailwind:dist": "tailwind build site/css/styles.css -o build/dist/css/styles.css",
+    "build_css:dist": "tailwind build site/css/styles.css | ./scripts/purgecss_stdin build/dist/css/styles.css",
+    "build:dev": "npm run tailwind:dev && npm run hugo:dev",
+    "build:dist": "npm-run-all hugo:dist build_css:dist",
+    "watch_hugo:dev": "npm-watch hugo:dev",
+    "watch_tailwind:dev": "npm-watch tailwind:dev",
+    "edit": "npm-run-all --parallel watch_hugo:dev watch_tailwind:dev live",
+    "live": "live-server --no-css-inject --no-browser --host=0.0.0.0 --port=1313 ./build/dev"
   },
   "repository": {
     "type": "git",
@@ -33,6 +44,10 @@
   "homepage": "https://github.com/mhhollomon/codevamping-blog#readme",
   "devDependencies": {
     "live-server": "^1.2.1",
-    "npm-watch": "^0.6.0"
-  }
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.6.0",
+    "purgecss": "^1.4.2",
+    "tailwindcss": "^1.1.4"
+  },
+  "dependencies": {}
 }

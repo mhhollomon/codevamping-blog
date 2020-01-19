@@ -13,3 +13,4 @@ public/
 
 # node stuff
 node_modules/
+package-lock.json

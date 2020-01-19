@@ -203,7 +203,16 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
  *******************************************/
 
 .post-summary {
-  padding-bottom: 15px;
+  @apply border-b border-cgray mb-12 pb-4;
+}
+
+/*****************************************
+ * Block of text as rendered for the summary.
+ * Note that the summary-block class itself 
+ * should not have any styling.
+ *****************************************/
+.summary-block p {
+    @apply my-4;
 }
 
 /********** Post-info *************/

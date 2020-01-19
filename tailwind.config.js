@@ -15,7 +15,8 @@ module.exports = {
             '2gray' : '#222222',
             '9gray' : '#999999',
             'cgray' : '#cccccc',
-            'egray' : '#eeeeee'
+            'egray' : '#eeeeee',
+            'linkblue' : '#2222aa'
         },
         width : {
             '70pct' : '70%',
