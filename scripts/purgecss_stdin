@@ -36,7 +36,6 @@ if (config == null) {
 async function purge_it (config) {
 
     const purger = new Purgecss.PurgeCSS();
-    console.log("got here ----");
 
     for (z of Object.getOwnPropertyNames(config)) {
         console.log(`${z} => ${config[z]}`);
@@ -45,6 +44,10 @@ async function purge_it (config) {
     if (filename == '-') {
         console.log(result[0].css);
     } else {
+        dir = path.dirname(filename);
+        if (! fs.existsSync(path)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
         fs.writeFile(filename, result[0].css, function(err) {
                         if (err) console.error(err.message)
                     })
