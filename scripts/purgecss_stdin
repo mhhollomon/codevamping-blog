@@ -32,14 +32,23 @@ if (config == null) {
     config.css = [{ raw : stdin_string }];
 }
 
-const purger = new Purgecss(config);
 
-let result = purger.purge();
+async function purge_it (config) {
 
-if (filename == '-') {
-    console.log(result[0].css);
-} else {
-    fs.writeFile(filename, result[0].css, function(err) {
-                    if (err) console.error(err.message)
-                })
+    const purger = new Purgecss.PurgeCSS();
+    console.log("got here ----");
+
+    for (z of Object.getOwnPropertyNames(config)) {
+        console.log(`${z} => ${config[z]}`);
+    }
+    let result = await purger.purge(config);
+    if (filename == '-') {
+        console.log(result[0].css);
+    } else {
+        fs.writeFile(filename, result[0].css, function(err) {
+                        if (err) console.error(err.message)
+                    })
+    }
 }
+
+purge_it(config)
