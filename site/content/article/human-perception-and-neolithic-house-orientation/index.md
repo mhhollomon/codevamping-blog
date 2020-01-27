@@ -23,7 +23,7 @@ resources:
 
 ## Lifestyles of the Neolithic
 
-It is  bout 8,000 years ago in Central Europe. You and your clan are trying
+It is about 8,000 years ago in Central Europe. You and your clan are trying
 out the latest lifestyle craze "farming". You live in what modern scholars call
 "longhouses" - 15-20 feet wide and around 100 feet long, short walls with an
 extreme pitched roof.
@@ -34,7 +34,7 @@ is time to build a new one[^1].
 [^1]: Archeologist don't have many clues on why a house was abandoned.
 
 The clan picks a spot about 100 yards away from the old house and rebuilds. For
-reasons only know to you, you go to particular pains to make the new house have
+reasons only known to you, you go to particular pains to make the new house have
 the same orientation as the old - the new house will be parallel to the old
 one[^2].
 
@@ -78,22 +78,22 @@ Using the fact that orientation will drift over time, the scientist can at
 least establish a likely *relative* order to the houses. Then prudent sampling
 can firm up the time range.
 
-And it get better. Since all we need to know is where the houses were and how
+And it gets better. Since all we need to know is where the houses were and how
 they were oriented, we don't even need to do a full-scale excavation. Using a
 [geophyiscal
 survey](https://study.com/academy/lesson/geophysical-surveys-definition-methods.html)
 of magnetic anomalies, longhouses can be found based on the disturbed soil in
 trenches associated with the buildings. A large number of buildings over a wide
-area can be found. The above insight can be used to place them in relative
-time. A select few can be excavated to yield an absolute date for the
-sequence.
+area can be found, quickly and relatively cheaply. The above insight can be
+used to place them in relative time. A select few can be excavated to yield an
+absolute date for the sequence.
 
-In a world where science frequently gets short time and short money, anything
+In a world where science frequently gets short time and shorter money, anything
 that allows to extract more information with less is a useful tool.
 
 ## Resources
 
-- [Always counterclockwise](https://m.phys.org/news/2020-01-conterclockwise-puzzle-early-neolithic-house.html)
+- [Always counterclockwise](https://phys.org/news/2020-01-conterclockwise-puzzle-early-neolithic-house.html)
 - [A new approach to the temporal significance of house orientations in European Early Neolithic settlements](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0226082)
 - [Pseudoneglect - Wikipedia](https://en.wikipedia.org/wiki/Pseudoneglect)
 - [to the left -
