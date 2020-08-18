@@ -4,7 +4,7 @@
   "description": "files for codevamping blog",
   "main": "index.js",
   "watch": {
-    "build-and-serve": {
+    "watch_hugo:dev": {
       "patterns": [
         "site"
       ],
