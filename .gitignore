@@ -1,4 +1,4 @@
-# hugo cache for image processing when using `hugo server`
+# hugo cache for image processing when using `hugo serve`
 resources/
 
 # hugo output directory
@@ -13,3 +13,6 @@ public/
 
 # node stuff
 node_modules/
+
+# hugo
+.hugo_build.lock

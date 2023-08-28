@@ -1,5 +1,12 @@
+
+
 module.exports = {
+content: [
+    `./layouts/**/*.html`, 
+    `./content/**/*.{html,md}`
+],
   theme: {
+
     fontFamily : {
         'sans' : ['Roboto', 'sans-serif' ],
         'serif': ["Noto Serif", 'serif'  ]
