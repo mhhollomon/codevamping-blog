@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode | default "en" }}" 
+<html lang="en" 
       prefix="og: http://ogp.me/ns#">
 
 <head>
@@ -22,7 +22,14 @@
     {{partial "html-header/fonts.html" . }}
 {{end}}
 {{- block "head-styles" . }}
-    <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+    {{ $styles := resources.Get "css/styles.css" }}
+    {{ $styles = $styles | resources.PostCSS }}
+    {{ if  hugo.IsProduction  }}
+        {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
+    {{ else if .Site.IsServer }}
+        {{ $styles = $styles | resources.ExecuteAsTemplate (printf "tailwind.dev.%v.css" now.UnixMilli) . }}
+    {{ end }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 {{end}}
 
 {{/* only make this a partial. I don't really see a need to
@@ -58,16 +65,6 @@
     <meta property="og:image:height" content="{{$image.Height }}" />
 {{end}}
 
-    <!-- Facebook -->
-    {{/*
-    {{ with getenv "FACEBOOK_APP_ID" }}
-    <meta property="fb:app_id" content="{{.}}" />
-    {{end -}}
-    */}}
-
-{{ if hasPrefix .Site.GoogleAnalytics "UA-" -}}
-    {{ template "_internal/google_analytics.html" . }}
-{{- end}}
 
     <!-- comments -->
 {{- if .IsPage }}
@@ -88,12 +85,12 @@
 <!--
     The body is made up of threee blocks.
     The header that contains the site banner and name
-    A "main" block that contians the side-bar and the main content
+    A "main" block that contains the side-bar and the main content
     A footer tha contains copy-right etc.
 -->
 
-<body class="color-2gray font-serif leading-relaxed">
-    <header class="w-full bg-cover bg-no-repeat bg-white bg-center flex items-center content-center" 
+<body class="font-serif leading-relaxed">
+    <header class="w-full h-48 bg-cover flex items-center content-center" 
         style="background-image: url({{ .Site.Params.header_background | relURL }});" >
         <div class="m-auto text-center bg-gray" >
             <span class="text-white font-medium md:text-7xl text-4xl align-middle">{{ .Site.Params.header_title }}</span>
