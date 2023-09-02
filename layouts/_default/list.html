@@ -2,11 +2,17 @@
     <main class= "main-content">
         {{ $paginator := .Paginate (sort .Data.Pages "PublishDate" "desc") }}
         {{ range $paginator.Pages }}
+{{ $headless := false }}
+        {{with .Params.headless }}
+            {{ $headless = . }}
+        {{ end }}
+{{ if eq $headless false }}
 <article class="post-summary post">
     {{ partial "summary-article-header" . }}
     {{ partial "summary-text" . }}
     <p><a href="{{ .RelPermalink }}" title="{{ .Title }}">Read more &raquo;</a></p>
 </article>
+{{ end }}
         {{ end }}
         {{ partial "pagination" . }}
     </main>
