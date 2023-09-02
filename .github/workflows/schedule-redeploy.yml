@@ -2,9 +2,7 @@ name: schedule redeploy
 
 on:
     repository_dispatch :
-        branches: 
-            - master
-            - main
+        types : [ "request_redeploy" ]
 
     push:
         branches: 

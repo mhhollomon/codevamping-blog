@@ -1,5 +1,8 @@
 name: Deploy to Firebase Hosting on merge
-'on':
+on:
+  repository_dispatch :
+    types : [ "request_redeploy" ]
+
   push:
     branches:
       - master
