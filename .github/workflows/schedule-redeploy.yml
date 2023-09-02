@@ -4,10 +4,12 @@ on:
     repository_dispatch :
         branches: 
             - master
+            - main
 
     push:
         branches: 
             - master
+            - main
 
 env :
     BUCKET_URI: "gs://redeploy-data.codevamping.com"
@@ -18,10 +20,10 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@latest
 
       - name: setup hugo
-        uses: peaceiris/actions-hugo@v2.4.13
+        uses: peaceiris/actions-hugo@v2.6.0
         with:
           hugo-version: 'latest'
           extended: true
@@ -34,9 +36,9 @@ jobs:
           echo "END"
 
       - name : setup-gcloud
-        uses : GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses : GoogleCloudPlatform/github-actions/setup-gcloud@main
         with :
-          version : '274.0.0'
+          version : 'latest'
           service_account_email: ${{secrets.GCP_GITHUB_FID}}
           service_account_key: ${{secrets.GCP_GITHUB_KEY}}
 
