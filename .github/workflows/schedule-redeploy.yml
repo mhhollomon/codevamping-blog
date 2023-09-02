@@ -36,7 +36,7 @@ jobs:
           echo "END"
 
       - name : setup-gcloud
-        uses : GoogleCloudPlatform/github-actions/setup-gcloud@main
+        uses : github-actions/setup-gcloud@main
         with :
           version : 'latest'
           service_account_email: ${{secrets.GCP_GITHUB_FID}}
