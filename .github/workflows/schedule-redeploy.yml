@@ -35,12 +35,13 @@ jobs:
           cat next_deploy_date.txt
           echo "END"
 
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
       - name : setup-gcloud
-        uses : google-github-actions/setup-gcloud@main
-        with :
-          version : 'latest'
-          service_account_email: ${{secrets.GCP_GITHUB_FID}}
-          service_account_key: ${{secrets.GCP_GITHUB_KEY}}
+        uses : google-github-actions/setup-gcloud@v1
 
       - name : upload_file
         run  : |
