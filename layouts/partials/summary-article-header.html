@@ -5,7 +5,12 @@
     {{ $type = . }}
 {{ end }}
 {{ if eq $type "article" }}
-    {{ $resource = .Resources.GetMatch "hero" }}
+    {{with .Resources.GetMatch "hero" }}
+        {{$resource = . }}
+    {{ else }}
+        {{ $headless := $.Site.GetPage "/article-headless" }}
+        {{ $resource = $headless.Resources.GetMatch "hero" }}
+    {{ end }}
 {{ else if eq $type "blog" }}
     {{ $headless := $.Site.GetPage "/blog-headless" }}
     {{ $resource = $headless.Resources.GetMatch "hero" }}
