@@ -119,6 +119,7 @@ Next.js knows about postCSS, so we will integrate PurgeCSS via postCSS.
 
 ```bash
 npm install --save-dev postcss @fullhuman/postcss-purgecss
+npm install --save-dev postcss-flexbugs-fixes postcss-preset-env
 ```
 
 Put the following in `postcss.config.js`
@@ -126,17 +127,38 @@ Put the following in `postcss.config.js`
 ```js
 module.exports = {
   plugins: [
+    "postcss-flexbugs-fixes",
     [
-      '@fullhuman/postcss-purgecss', {
-        content: [
-          "./app/**/*.{js,jsx,ts,tsx}",
-          "./components/**/*.{js,jsx,ts,tsx}"
-        ]
+      "postcss-preset-env",
+      {
+        "autoprefixer": {
+          "flexbox": "no-2009"
+        },
+        "stage": 3,
+        "features": {
+          "custom-properties": false
+        }
       }
+    ],
+
+    [
+      '@fullhuman/postcss-purgecss', 
+      process.env.NODE_ENV === 'production'
+        ? {
+          content: [
+            "./app/*.{js,jsx,ts,tsx}",
+            "./app/**/*.{js,jsx,ts,tsx}",
+            "./components/**/*.{js,jsx,ts,tsx}"
+          ],
+          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+          safelist: ["html", "body"]
+        } : false
     ]
   ],
 };
 ```
+
+See also the [Nextjs PurgeCSS Guide](https://purgecss.com/guides/next.html).
 
 Check the [PurgeCSS Documentation](https://purgecss.com/plugins/postcss.html)
 for the complete list of options.
