@@ -415,6 +415,15 @@ figcaption {
     @apply mx-8 my-4;
 }
 
+article tr {
+  border-bottom : 1px solid black;
+}
+article td {
+  border-left : 1px solid black;
+  border-right : 1px solid black;
+  padding: 6px;
+}
+
 /********************************************
  *
  * Side-note shortcode styling
